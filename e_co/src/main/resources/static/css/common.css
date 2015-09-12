@@ -1,0 +1,490 @@
+	@charset "UTF-8";
+/* CSS Document */
+
+a img{border-style: none}
+body{
+	width: 100%;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	overflow-x: hidden;
+}
+
+/*-------- login --------*/
+.back{
+	background: url(../img/back.png) repeat;
+}
+#main{
+	width: 964px;
+	margin: 0 auto;
+}
+#login_left{
+	width: 460px;
+	float: left;
+	margin-right: 100px;
+	text-align: center;
+}
+#login_left2{
+	width: 450px;
+	float: left;
+	margin-right: 20px;
+	text-align: center;
+}
+#login_logo{
+	margin: 140px auto 120px;
+}
+#login_right{
+	width: 340px;
+	float: left;
+	margin-top: 50px;
+}
+#login_right2{
+	width: 490px;
+	float: left;
+	text-align: center;
+}
+#login_right3{
+	width: 490px;
+	float: left;
+	text-align: center;
+	margin-top: 100px;
+}
+#login_info{
+	width: 290px;
+	margin: 0 10px 20px;
+}
+#pass_info{
+	width: 290px;
+	margin: 20px 0 30px 90px;
+}
+.login_title{
+	margin: 10px 0;
+	text-align: left;
+	font-family: myfont;
+	font-size: 26px;
+}
+.login_form{
+	width: 290px;
+	height: 58px;
+	margin: 10px 0 20px;
+	text-align: left;
+	background: url(../img/login/text_space.png) no-repeat;
+}
+.login_form input:focus {
+  outline: none;
+}
+.login_form input {
+  border: none;
+  height: 2em;
+  margin: 10px 0 0 10px;
+  font-size: 16px;
+}
+.registration{
+	margin-top: 30px;
+	font-family: myfont;
+	font-size:  21px;
+}
+.registration a{
+	border-width: 0px;
+	border-bottom-width: 2px;
+	border-style: dashed;
+	text-decoration: none;
+	border-color: #756b62;
+	color: #756b62;
+}
+.registration a:hover{
+	border-color: #77ab5e;
+	color: #77ab5e;
+}
+
+
+/*-------- account --------*/
+.regist{
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+.account{
+	width: 100%;
+	background: #fff;
+	border-collapse: collapse;
+	border: 1px solid #625342;
+	border-right: 1px solid #625342;
+	border-bottom: 1px solid #625342;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.account th{
+	width: 28%;
+	padding: 8px 10px; 
+	text-align: left;
+	vertical-align: top;
+	color: #000;
+	border-bottom: 1px dotted #625342;
+	border-left: 1px solid #625342;
+	background: #faf3ea;
+	font-weight: bold;
+	width: 28%;
+}
+.account td{
+	width: 72%;
+	padding: 8px 10px;
+	border-bottom: 1px dotted #625342;
+	border-left: 1px solid #625342;
+	text-align: left;
+}
+
+.start, .profile{
+	width: 340px;
+	height: 108px;
+	background-image: url(../img/login/start.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.start{
+	margin-left: 75px;
+}
+.start_wrap a{
+	font-family: myfont;
+	text-decoration: none;
+	color: #fff;
+	font-size: 28px;
+}
+.start_text{
+	padding-top: 30px;
+}
+.pro_text{
+	padding: 30px 0 0 100px;
+}
+.account_btn{
+	margin: 30px 0 0 30px;
+}
+.account_btn div{
+	float: left;
+	margin-left: 15px;
+}
+
+.registration_text {
+	font-family: myfont;
+	text-decoration: none;
+	color: #fff;
+	font-size: 28px;
+	padding-top: 30px;
+}
+
+
+/*-------------- search --------------*/  
+/*-------- header --------*/  
+#header_width{
+	position: fixed;
+	width: 100%;
+}
+#header{
+	width: 964px;
+	margin: 0 auto;
+	padding: 30px 30px 0 ;
+}
+#s_logo{
+	width: 220px;
+	float: left;
+	margin-right: 20px; 
+}
+#name{
+	width: 300px;
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.5em;
+	font-family: myfont;
+}
+
+/*-------- tab --------*/  
+.tab li{
+	list-style: none;
+	float: left;
+	position: relative;
+}
+.clear{
+	clear: both;
+}
+.ad, .ad_select{
+	position: absolute;
+	top: 20px;
+	left: 15px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.ad{
+	top: 20px;
+	color: #566;
+}
+.ad_select{
+	top: 15px;
+	color: #fff;
+}
+#first_line, #second_line, #third_line, #force_line{
+	height: 12px;
+	z-index: 100;
+	position: relative;
+	top: 94px;
+}
+#first_line{
+	background: url(../img/search/first_line.png) repeat-x;
+}
+#second_line{
+	background: url(../img/search/second_line.png) repeat-x;
+}
+#third_line{
+	background: url(../img/search/third_line.png) repeat-x;
+}
+#force_line{
+	background: url(../img/search/force_line.png) repeat-x;
+}
+
+/*-------- all_douwload --------*/  
+.logout{
+	font-size: 12px;
+	font-family: myfont;
+	text-decoration: underline;
+	text-align: right;
+	top: -25px;
+	position: relative;
+}
+.dl_btn{
+	width: 113px;
+	height: 52px;
+	background-image: url(../img/search/dl_all.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-top: -15px;
+	position: relative;
+}
+.dl_text{
+	padding-top: 8px;
+}
+.dl_wrap a{
+	font-family: myfont;
+	text-decoration: none;
+	color: #fff;
+	font-size: 17px;
+	text-align: center;
+	float: left;
+}
+.count{
+	width: 22px;
+    height: 22px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #F00;
+	font-size: 12px;
+	font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;
+	text-align: center;
+	line-height: 1.9em;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/*-------- side --------*/
+#side{
+	position: fixed;
+	width: 220px;
+	padding-top: 110px;
+	padding-left: 200px;
+	overflow: auto;
+}
+#side p{
+	font-size: 12px;
+}
+.menu li{
+	margin-left: -20px;
+	font-size: 15px;
+	font-weight: bold;
+	list-style: url(../img/search/icon.png) ;
+}
+.menu li span{
+	font-size: 12px;
+}
+.menu li a{
+	color: #000;
+}
+.menu li a:visited{
+	color: #1F31C8;
+}
+.menu2 li{
+	font-size: 14px;
+	font-weight: normal;
+	list-style: disc;
+	line-height: 1.8em;
+}
+.event{
+	margin-bottom: 10px;
+}
+
+/*-------------- view --------------*/  
+#view{
+	width: 720px;
+	float: left;
+	padding-top: 20px;
+}
+#view h3{
+	font-weight: bold;
+	font-size: 17px;
+}
+#view h3 span{
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+/*-------- pagenation --------*/ 
+.pagenation{
+	width: 700px;
+	height: 25px;
+	padding: 7px 10px 0;
+	background: #e3e3e3;
+	border: 1px solid #bbbcbc;
+	font-size: 14px;
+}
+.page{
+	float: right;
+}
+.page li{
+	padding: 1px 3px 0;
+	border: 1px solid #8c775d;
+	list-style: none;
+	float: left;
+	margin-top: -17px;
+}
+.page_link{
+	background: #fff;
+	color: #8c775d;
+}
+.page li a{
+	text-decoration: none;
+	color: #8c775d;
+}
+.page li+li{
+	margin-left: 5px;
+}
+.vewing{
+	background: #f0974f;
+	color: #fff;
+}
+.middle{
+	background: #c2c2c2;
+	color: #8c775d;
+}
+
+/*-------- photo --------*/ 
+.photo{
+	clear: both;
+	margin-top: 10px;
+}
+.photo .select{
+	width: 132px;
+	float: left;
+	margin: 0 0 15px;
+}
+.photo .select+.select{
+	margin-left: 15px;
+}
+.subnaile{
+	width: 130px;
+	height: 87px;
+	background: #fff;
+	border: 1px solid #747474;
+	text-align: center;
+	box-sizing: content-box;
+}
+.position {
+	position: relative;
+}
+.check_on{
+	width: 128px;
+	height: 85px;
+	border: 2px solid #f0974f;
+	z-index: 100;
+	position: absolute;
+	top: -1px;
+	left: -1px;
+}
+.icon{
+	height: 26px;
+	margin: 0 0 0;
+	padding: 4px 20px ;
+	background: #e3e3e3;
+}
+.dl{
+	float: right;
+}
+
+/*-------- footer --------*/ 
+#footer{
+	clear: both;
+	width: 964px;
+	height: 25px;
+	margin: 0 auto;
+	padding-top: 10px;
+	font-size: 11px;
+	text-align: right;
+}
+#footer ul li{
+	list-style: none;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+/*-------- zoom --------*/ 
+.zoom_dl{
+	float: right;
+}
+.zoom_btn{
+	width: 339px;
+	height: 59px;
+	background-image: url(../img/zoom/dl_btn.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.zoom_menu{
+	width: 800px;
+	margin: 0 auto;
+}
+.zoom_wrap a{
+	font-family: myfont;
+	text-decoration: none;
+	color: #fff;
+	font-size: 26px;
+	text-align: center;
+	float: left;
+	margin-left: 8px;
+}
+.zoom_text{
+	padding-top: 15px;
+}
+
+/*-------- font --------*/ 
+@font-face {
+    font-family: myfont; 
+    src: url(APJapanesefontT.ttf); 
+}
+
+.h3_myf{
+	font-family: myfont;
+	font-size: 32px;
+	padding-bottom: 20px;
+}
+.h2_text{
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 26px;
+	padding-bottom: 20px;
+	font-weight: bold;
+}
+.h3_text{
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 18px;
+	padding: 30px 0 13px 0;
+	margin-bottom: 29px;
+	border-bottom: solid 1px #000;
+	line-height: 1.4em;
+	font-weight: bold;
+}

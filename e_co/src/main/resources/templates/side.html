@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>イーコ | サイドメニュー</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="css/reset.css" media="all"/>
+</head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/ddaccordion.js">
+/***********************************************
+* Accordion Content script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* Visit http://www.dynamicDrive.com for hundreds of DHTML scripts
+* This notice must stay intact for legal use
+***********************************************/
+</script>
+<script type="text/javascript">
+ddaccordion.init({
+    headerclass: "submenuheader", 
+    contentclass: "submenu",
+    revealtype: "click", 
+    mouseoverdelay: 500,
+    collapseprev: false,
+    defaultexpanded: [], 
+    onemustopen: false, 
+    animatedefault: false,
+    persiststate: true,
+    toggleclass: ["", ""],
+    togglehtml: ["suffix", "", ""], 
+    animatespeed: "slow",
+    oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+        //do nothing
+    },
+    onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+        //do nothing
+    }
+})
+</script>
+
+<body>
+	<div id="side"><!-- side -->
+	    <p>ユーザー名　様</p>
+	    <p><a href="account.html" target="_top">プロフィール編集はこちら</a></p>
+	    
+	    <ul class="menu">
+	        <li class="event"><a class="menuitem submenuheader" >入園式<span>　2014/4/4</span></a>
+	                <div class="submenu">
+	                <ul class="menu2">
+	                		<li><a href="search_result.html" target="main">入場</a></li>
+	                		<li><a href="search_result.html" target="main">退場</a></li>
+	                </ul>
+	                </div>
+	        </li>
+	        <li class="event"><a class="menuitem submenuheader" >運動会<span>　2014/10/10</span></a>
+	                <div class="submenu">
+	                <ul class="menu2">
+	                		<li><a href="search_result.html" target="main">入場</a></li>
+	                		<li><a href="search_result.html" target="main">組み体操</a></li>
+	                		<li><a href="search_result.html" target="main">かけっこ１</a></li>
+	                     	<li><a href="search_result.html" target="main">かけっこ２</a></li>
+	                     	<li><a href="search_result.html" target="main">かけっこ３</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ４</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ５</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ６</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ７</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ８</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ９</a></li>
+	                      <li><a href="search_result.html" target="main">かけっこ10</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ１</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ２</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ３</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ４</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ５</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ６</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ７</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ８</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ９</a></li>
+	                      <li><a href="search_result.html" target="main">玉入れ10</a></li>
+	                      <li><a href="search_result.html" target="main">綱引き</a></li>
+	                      <li><a href="search_result.html" target="main">ダンス</a></li>
+	                      <li><a href="search_result.html" target="main">退場</a></li>
+	                </ul>
+	                </div>
+	        </li>
+	        <li class="event"><a class="menuitem submenuheader" >お遊戯会<span>　2014/11/10</span></a>
+	                <div class="submenu">
+	                <ul class="menu2">
+	                		<li><a href="search_result.html" target="main">入場</a></li>
+	                		<li><a href="search_result.html" target="main">合唱</a></li>
+	                		<li><a href="search_result.html" target="main">ダンス</a></li>
+	                </ul>
+	                </div>
+	        </li>
+	    </ul>
+	</div><!-- side_end -->
+    
+</body>
+</html>

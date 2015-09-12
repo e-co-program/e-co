@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+a img{ border-style: none }
+
+/* Easy Slider */
+#slider {
+	position: relative;
+    width: 964px;
+    height: 488px;
+    margin: 0 auto;
+    padding-top: 0;
+}
+		
+/* スライドショー */
+.graphic, #prevBtn, #nextBtn, #slider1prev, #slider1next{
+     margin: 0;
+     padding: 0;
+     display: block;
+     overflow: hidden;
+     text-indent: -8000px;
+ }		
+#container{	
+		width: 964px;
+		height: 488px;
+		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		text-align: left;
+		background-color: rgba(255,255,255,0.2);		
+		margin-bottom: 2em;
+}
+#content{
+	position: relative;
+}		
+		
+
+/* Easy Slider */
+#slider ul, #slider li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+}
+#slider li{ 
+		/* 
+			define width and height of list item (slide)
+			entire slider area will adjust according to the parameters provided here
+		*/ 
+		width: 964px;
+		height: 488px;
+		overflow: hidden;
+		text-align: center;
+}
+
+#prevBtn, #nextBtn,#slider1next, #slider1prev{ 
+		display: block;
+		width: 40px;
+		height: 80px;
+		position: absolute;
+		left: 0;
+		top: 200px;
+		z-index: 1000;
+		margin: 0;
+        padding: 0;
+        overflow: hidden;
+}
+#nextBtn, #slider1next{ 
+		left: 924px;
+}														
+#prevBtn a, #nextBtn a,#slider1next a, #slider1prev a{  
+		display: block;
+		position: relative;
+		width: 40px;
+		height: 80px;
+		background: url(../img/zoom/btn_prev.png) no-repeat 0 0;	
+}	
+#nextBtn a, #slider1next a{ 
+		background: url(../img/zoom/btn_next.png) no-repeat 0 0;	
+}	

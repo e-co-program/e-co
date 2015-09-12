@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>イーコ | 新規会員登録</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" th:href="@{/css/common.css}" media="all"/>
+<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/css/reset.css}" media="all"/>
+</head>
+
+<body class="back">
+	<div id="main" style="padding: 30px;">
+   		<div id="login_left2">
+           <div id="login_logo"><img src="img/login/logo.png" th:src="@{/img/login/logo.png}" alt="ロゴマーク"/></div>
+           <div id=""><img src="img/login/illust.png" th:src="@{/img/login/illust.png}"/></div>
+       	</div>
+        
+        <div id="login_right2">
+			<span style=" font-family: myfont; font-size: 18px;">下記のフォームを全て入力して登録しよう！</span>
+            <form action="/registration" method="post">
+				<table class="account">
+					<tr>
+						<th>施設コード<br />12桁</th>
+                       	<td><input type="text" name="sisetu" size="10" placeholder="4桁"/> ー <input type="text" name="sisetu" size="10" placeholder="4桁"/> ー <input type="text" name="sisetu" size="10" placeholder="4桁"/><br /><span style="font-size: 10px;">施設コードが分からない場合は幼稚園・保育園にお問い合わせ下さい</span></td>
+                    </tr>
+                    <tr>
+               			<th>保護者様氏名</th>
+                        <td>姓 <input type="text" name="sei" size="18"/>　名 <input type="text" name="mei" size="18"/></td>
+                    </tr>
+					<tr>
+						<th>ふりがな</th>
+						<td>姓 <input type="text" name="sei_kana" size="18"/>　名 <input type="text" name="mei_kana" size="18"/></td>
+					</tr>
+                    <tr>
+               			<th>ID(メールアドレス)</th>
+                        <td><input type="email" name="mail" size="50"/></td>
+                    </tr>
+                    <tr>
+               			<th>ID(確認用)</th>
+                        <td><input type="email" name="mail_confirmation" size="50"/></td>
+                    </tr>
+                    <tr>
+               			<th>パスワード</th>
+                        <td><input type="password" name="pass" size="50"/><br /><span style="font-size: 10px;">英数字を含む8〜13桁で入力して下さい</span></td>
+                    </tr>
+                    <tr>
+               			<th>パスワード(確認用)</th>
+                        <td><input type="password" name="pass_confirmation" size="50"/></td>
+                    </tr>
+                    <tr>
+               			<th>お子様の氏名</th>
+                        <td>姓 <input type="text" name="enjisei" size="18"/>　名 <input type="text" name="enjimei" size="18"/></td>
+                    </tr>
+                    <tr>
+               			<th>ふりがな</th>
+                        <td>姓 <input type="text" name="enjisei_kana" size="18"/>　名 <input type="text" name="enjimei_kana" size="18"/></td>
+                    </tr>
+                    <tr>
+               			<th>生年月日</th>
+                        <td>西暦 <input type="text" name="year" size="10"/>年　 <input type="text" name="month" size="5"/>月　 <input type="text" name="day" size="5"/>日</td>
+                    </tr>
+                    <tr>
+               			<th>利用規約・<br />個人情報保護方針</th>
+                        <td><a href="userpolicy.html" th:href="@{/userpolicy.html}" target="_blank">利用規約</a>　<a href="privacy.html" th:href="@{/privacy.html}" target="_blank">個人情報保護方針</a>　　<input type="checkbox" name="check"/>同意する</td>
+                    </tr>
+                </table>
+			
+	            <p style="font-size: 12px;">※弟妹の登録はログイン後のプロフィール編集から行ってください</p>
+	            <!--
+	            <div class="start_wrap"><a href="search_index.html" th:href="@{/search_index.html}"><div class="start"><div class="start_text">同意して登録する</div></div></a></div>
+				-->
+	            <div class="start">
+	            	<input class="registration_text" type="image" alt="同意して登録する"/>
+	            </div>
+            </form>
+    	</div>
+    </div>
+    <div id="footer" style="padding-top: 10px;">© 2015 WideVideo</div>
+</body>
+</html>
