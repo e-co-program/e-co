@@ -24,8 +24,7 @@ public class LoginController {
 	public String post(@RequestParam("mail") String mail, @RequestParam("pass") String pass) {
 		System.out.println("mail:" + mail + " pass:" + pass);
 		ModelAndView mv = new ModelAndView("search_index");
-		//return "search_index";
-		return "test";
+		return "search_index";
 	}
 	
 	@RequestMapping("/registration")
@@ -68,8 +67,7 @@ public class LoginController {
 				+ ", enjisei:" + enjisei
 				+ ", enjisei_kana:" + enjisei_kana
 				+ ", year:" + year);
-		//return "search_index";
-		return "test";
+		return "search_index";
 	}
 	
 	@RequestMapping("/password")
