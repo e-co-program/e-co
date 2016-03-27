@@ -56,8 +56,7 @@ public class UserController {
 			return mv;
 		}
 		ParentUser parentUser = parentUsers.get(0);
-		if ((parentUser.getMailadd() != null || !parentUser.getMailadd().isEmpty())
-				|| (parentUser.getPw() != null || parentUser.getPw().isEmpty())) {
+		if (parentUser.getMailadd() != null || parentUser.getPw() != null) {
 			System.out.println("initialRegistration(): ユーザー情報登録済みです。youchienCode="
 					+ youchienCode + ", userCode=" + form.getUserCode());
 			ModelAndView mv = new ModelAndView("registration");
