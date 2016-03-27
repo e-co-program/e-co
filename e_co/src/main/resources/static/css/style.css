@@ -109,7 +109,7 @@ body, .item {
 .dl_text{
 	padding-top: 8px;
 }
-.dl_wrap a{
+.dl_wrap .dl_all{
 	font-family: myfont;
 	text-decoration: none;
 	color: #fff;
@@ -206,6 +206,104 @@ section {
 
 .spacer {
 	height: 10000px;
+}
+
+/*-------------- view --------------*/
+#view h3{
+	font-weight: bold;
+	font-size: 17px;
+}
+#view h3 span{
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+/*-------- pagenation --------*/
+.pagenation{
+	width: 700px;
+	height: 25px;
+	padding: 7px 10px 0;
+	background: #e3e3e3;
+	border: 1px solid #bbbcbc;
+	font-size: 14px;
+}
+.page{
+	padding: 0px 10px 0;
+	float: right;
+	margin-top: -6px;
+}
+.page li{
+	padding: 1px 3px 0;
+	border: 1px solid #8c775d;
+	list-style: none;
+	float: left;
+	margin-top: -17px;
+}
+.page_link{
+	background: #fff;
+	color: #8c775d;
+}
+.page li a{
+	text-decoration: none;
+	color: #8c775d;
+}
+.page li+li{
+	margin-left: 5px;
+}
+.vewing{
+	background: #f0974f;
+	color: #fff;
+}
+.middle{
+	background: #c2c2c2;
+	color: #8c775d;
+}
+
+/*-------- photo --------*/ 
+.photo{
+	clear: both;
+	margin-top: 10px;
+}
+.photo .select{
+	width: 132px;
+	float: left;
+	margin: 0 0 15px;
+}
+.photo .select+.select{
+	margin-left: 15px;
+}
+.photo .select .subnaile img {
+	max-width: 130px;
+	max-height: 87px;
+}
+.subnaile{
+	width: 130px;
+	height: 87px;
+	background: #fff;
+	border: 1px solid #747474;
+	text-align: center;
+	box-sizing: content-box;
+}
+.position {
+	position: relative;
+}
+.check_on{
+	width: 128px;
+	height: 85px;
+	border: 2px solid #f0974f;
+	z-index: 100;
+	position: absolute;
+	top: -1px;
+	left: -1px;
+}
+.icon{
+	height: 26px;
+	margin: 0 0 0;
+	padding: 4px 20px ;
+	background: #e3e3e3;
+}
+.dl{
+	float: right;
 }
 
 /*-------- font --------*/ 

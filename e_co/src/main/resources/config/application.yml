@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://133.242.230.16/eco
+    driverClassName: org.postgresql.Driver
+    username: eco
+    password: eco
+    
+spring.redis:
+  host: localhost
+  port: 6379
+  password: null
+  database: 0
+  pool:
+    max-idle: 8
+    min-idle: 0
+    max-active: 8
+    max-wait: -1

@@ -4,46 +4,69 @@
 <title>イーコ | 画像・動画検索</title>
 <link rel="stylesheet" href="style.css" th:href="@{/css/style.css}" media="all"/>
 <!--<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/css/reset.css}" media="all"/>-->
+<link rel="stylesheet" type="text/css" href="css/slider.css" th:href="@{/css/slider.css}" media="all" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+<script type="text/javascript" src="knockout-3.3.0.js" th:src="@{/js/knockout-3.3.0.js}"/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
-<script type="text/javascript" src="js/ddaccordion.js" th:src="@{/js/ddaccordion.js}"/>
-<script type="text/javascript">
-ddaccordion.init({
-    headerclass: "submenuheader", 
-    contentclass: "submenu",
-    revealtype: "click", "src/main/resources/templates/search_index.html"
-    mouseoverdelay: 500,
-    collapseprev: false,
-    defaultexpanded: [], 
-    onemustopen: false, 
-    animatedefault: false,
-    persiststate: true,
-    toggleclass: ["", ""],
-    togglehtml: ["suffix", "", ""], 
-    animatespeed: "slow",
-    oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
-        //do nothing
-    },
-    onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
-        //do nothing
-    }
-})
+<script th:inline="javascript">
+var ecoInfo = /*[[${EcoInfo}]]*/
 </script>
 <script type="text/javascript" src="js/search/search.js" th:src="@{/js/search/search.js}"/>
+<script type="text/javascript">
+$(function(){
+	$('.close,.modalBK').click(function(){
+		$('.modal').hide();
+	});
+});
+</script>
+<script type="text/javascript" src="js/easySlider1.7.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){	
+    $("#slider").easySlider({
+    speed: 1000,  // スクロールスピード設定
+    pause: 7000,  // 表示時間設定
+    auto: false, 
+    continuous: true
+    });
+    });	
+</script>
+<style type="text/css">
+.modal{display:none;}
+.modalBody{position: fixed; z-index:1000; background: #000; width:50%; height:50%;}
+.modalBK{position: fixed; z-index:999; height:100%; width:100%;background:#000; opacity: 0.9;filter: alpha(opacity=90);-moz-opacity:0.90;}
+</style>
+<style type="text/css">
+/*-- 装飾用CSS --*/
+.btns{font-size: 80px; width:150px; background:#111; height: 150px; line-height:150px; text-align:center; font-family: arial; color: #fff; float: left; margin:10px; cursor: pointer}
+.close{cursor: pointer;}
+.modal{width:100%; color: #eee; margin-top: -100px;}
+.modal p{font-size:12px; text-align:justify;}
+.modal h1{font-weight:bold; font-size: 30px;}
+</style>
+<div class="modal">
+	<div class="modalBody">
+		<p class="close">×close</p>
+		<h1>Window - 1</h1>
+		<!-- <p><img src="img/mdthumb.png"/></p> -->
+		<p>ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。</p>
+	</div><!-- close.modalBody -->
+	<div class="modalBK"></div><!-- close.modalBK -->
+</div>
+</head>
 <body>
+
 	<div id="header_width" >
 		<div id="header"><!-- header -->
-       		<div id="s_logo"><img src="img/search/logo.png" th:src="@{/img/search/logo.png}" alt="ロゴマーク" width="150px"/></div>
-       		<div id="name">森田学園 庄和すずらん幼稚園</div>
+       		<div id="s_logo"><img src="img/search/logo.png" th:src="@{/img/search/logo_font1.png}" alt="ロゴマーク" height="60px"/></div>
+       		<div id="name" th:text="${EcoInfo.kindergartenName}">===幼稚園名が入る===</div>
                <ul class="tab">
-                   <li><img src="img/search/first_on.png" th:src="@{/img/search/first_on.png}" alt="今年度"/><span class="ad_select">2015</span></li>
-                   <li><a href="header_second.html"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="昨年"/><span class="ad">2014</span></a></li>
-                   <li><a href="header_third.html"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="一昨年"/><span class="ad">2013</span></a></li>
-                   <li style="margin-right: 5px;"><a href="header_force.html"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="３年前"/><span class="ad">2012</span></a></li>
+                   <li th:id="${years[0]}" onClick="changeYear(this)"><img src="img/search/first_on.png" th:src="@{/img/search/first_on.png}" alt="今年度"/><span class="ad_select" th:text="${years[0]}">===今年度が入る===</span></li>
+                   <li th:id="${years[1]}" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="昨年"/><span class="ad" th:text="${years[1]}">===昨年が入る===</span></li>
+                   <li th:id="${years[2]}" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="一昨年"/><span class="ad" th:text="${years[2]}">===一昨年が入る===</span></li>
+                   <li th:id="${years[3]}" style="margin-right: 5px;" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="３年前"/><span class="ad" th:text="${years[3]}">===3年前が入る===</span></li>
                </ul>
 			<div class="logout"><a href="login.html" th:href="@{/login.html}" target="_top">ログアウト</a></div>
-            <div class="dl_wrap"><a href=""><div class="dl_btn"><div class="dl_text">まとめて<br />ダウンロード</div><div class="count">628</div></div></a></div>
+            <div class="dl_wrap"><div class="dl_all" onClick="downLoad()"><div class="dl_btn"><div class="dl_text">まとめて<br />ダウンロード</div><div id="dl_count" class="count" data-bind="text: count">0</div></div></div></div>
         </div><!-- header_end -->
         <div class="clear"></div>
 	</div><!-- header_width_end --> 
@@ -61,93 +84,91 @@ ddaccordion.init({
 	</div>
 	
 	<div id="middle" class="item">
-		<nav class="item">
-			<p>ユーザー名　様</p>
-		    <p><a href="account.html" target="_top">プロフィール編集はこちら</a></p>
-		    <ul class="menu">
-		        <li class="event"><a class="menuitem submenuheader" >入園式<span>　2014/4/4</span></a>
-	                <div class="submenu">
-		                <ul class="menu2">
-	                		<li><a href="search_result.html" target="main">入場</a></li>
-	                		<li><a href="search_result.html" target="main">退場</a></li>
-		                </ul>
-	                </div>
-		        </li>
-		        <li class="event"><a class="menuitem submenuheader" >運動会<span>　2014/10/10</span></a>
-		        	<div class="submenu">
-		        		<ul class="menu2">
-		                	<li><a href="search_result.html" target="main">入場</a></li>
-		                	<li><a href="search_result.html" target="main">組み体操</a></li>
-		                	<li><a href="search_result.html" target="main">かけっこ１</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ２</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ３</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ４</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ５</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ６</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ７</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ８</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ９</a></li>
-		                    <li><a href="search_result.html" target="main">かけっこ10</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ１</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ２</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ３</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ４</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ５</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ６</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ７</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ８</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ９</a></li>
-		                    <li><a href="search_result.html" target="main">玉入れ10</a></li>
-		                    <li><a href="search_result.html" target="main">綱引き</a></li>
-		                    <li><a href="search_result.html" target="main">ダンス</a></li>
-		                    <li><a href="search_result.html" target="main">退場</a></li>
-		                </ul>
-	                </div>
-		        </li>
-		        <li class="event"><a class="menuitem submenuheader" >お遊戯会<span>　2014/11/10</span></a>
-		        	<div class="submenu">
-		                <ul class="menu2">
-		            		<li><a href="search_result.html" target="main">入場</a></li>
-		            		<li><a href="search_result.html" target="main">合唱</a></li>
-		            		<li><a href="search_result.html" target="main">ダンス</a></li>
-		                </ul>
-	                </div>
-		        </li>
-		    </ul>
+		<nav id="side_menu" class="item">
+		    <p><a href="registration.html" th:href="@{/registration.html}" target="_top">プロフィール編集はこちら</a></p>
+
+		    <!-- ko if: menuInfo -->
+		    <ul class="menu" id="menu_top_parent" data-bind="template: { name: 'menuParentTemplate', foreach: menuInfo }"></ul>
+		    
+		    <!-- /ko -->
 		</nav>
 		<section class="item">
 			右フレーム(スクロール)
 			<!--<div class="spacer"></div>-->
-			<div id="main" style="padding: 20px 0 30px;"><!-- main -->
-		        <div id="view"><!-- view -->
-		        	<h3></h3>
-		        	<div class="photo">
-		        	   
-		            </div>
-		             
-		            <div class="photo">
-		            	
-		            </div>
-		             
-		            <div class="photo">
-		            	
-		            </div>
-		             
-		            <div class="photo">
-		            	
-		            </div>
-		             
-		            <div class="photo">
-		            	
-		            </div>
-		             
-		            <div class="photo">
-		            	
-		            </div>
-		            <div class="clear"></div>    
-		        </div><!-- view_end -->
+			<!--  ko if: photoShow -->
+			<div id="main" style="padding: 20px 0 30px;" data-bind="template: { name: 'photoArea'}"><!-- main -->
 		    </div><!-- main_end -->
+		    <!-- /ko -->
 		</section>
 	</div>
+	
+	<script type="text/html" id="menuParentTemplate">
+		<li class="event" onClick="slide(this, arguments[0])" data-bind="clickBubble: false"><a class="menuitem submenuheader" data-bind="text: name"></a>
+			<!-- ko if: subMenuList -->
+			<div class="submenu" style="display:none">
+				<ul class="menu2">
+					<!-- ko foreach: subMenuList -->
+					<!-- ko if: type == 1 -->
+						<li data-bind="value: id, click: $root.getPhoto, clickBubble: false"><a data-bind="text: name"></a></li>
+					<!-- /ko -->					
+					<!-- ko if: type == 0 -->
+						<li class="child_event" onClick="slide(this, arguments[0])" data-bind="value: id"><a data-bind="text: name"></a>
+						<div class="submenu" style="display:none">
+							<ul class="menu2" id="menu_top_parent" data-bind="template: { name: 'menuChildTemplate', foreach: subMenuList }"></ul>
+						</div>
+						</li>
+					<!-- /ko -->
+					<!-- /ko -->
+				</ul>
+			</div>
+			<!-- /ko -->
+		</li>
+	</script>
+	<script type="text/html" id="menuChildTemplate">
+		<!-- ko if: type == 1 -->
+		<li data-bind="value: id, click: $root.getPhoto, clickBubble: false"><a data-bind="text: name"></a></li>
+		<!-- /ko -->					
+		<!-- ko if: type == 0 -->
+		<li class="child_event" onClick="slide(this, arguments[0])" data-bind="value: id"><a data-bind="text: name"></a>
+			<div class="submenu" style="display:none">
+				<ul class="menu2" id="menu_top_parent" data-bind="template: { name: 'menuChildTemplate', foreach: subMenuList }"></ul>
+			</div>
+		</li>
+		<!-- /ko -->
+	</script>
+	<script type="text/html" id="photoArea">
+		<div id="view" data-bind="if: photoShow"><!-- view -->
+			<h3 data-bind="text: title">平成26年度年少クラス運動会</h3>
+		    	<div class="pagenation"><!-- pagenation -->
+                	<div data-bind="text: countStr"></div>
+                		<ul class="page">
+							<!-- ko if: prev -->
+                    		<li class="page_link" data-bind="click: prevClick">＜＜ 前へ</li>
+							<!-- /ko -->
+                    		<li class="page_link">1</li>
+                    		<li class="vewing">2</li>
+                    		<li class="page_link">3</li>
+                    		<li class="page_link">4</li>
+                    		<li class="page_link">5</li>
+                    		<li class="midle">…</li>
+                    		<li class="page_link">10</li>
+							<!-- ko if: next -->
+                    		<li class="page_link" data-bind="click: nextClick">次へ ＞＞</li>
+							<!-- /ko -->
+                		</ul>
+        		</div><!-- pagenation_end -->
+		        <!-- ko foreach: photoInfosArray -->
+		        <div class="photo">
+		        	<!-- ko foreach: photoInfos -->
+		        	<div class="select">
+						<div class="subnaile"><img data-bind="attr: { src: url }, click:modal, clickBubble:false"/></div>
+						<div class="icon"><img data-bind="click:photoCheck, attr: { src: cIconUrl }"/><img src="img/search/dl1.png" class="dl"/></div>
+					</div>
+					<!-- /ko -->
+				</div>
+		        <!-- /ko -->
+			<div class="clear"></div>
+		</div><!-- view_end -->
+	</script>
 </body>
 </html>
