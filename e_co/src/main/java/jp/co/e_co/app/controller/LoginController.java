@@ -66,8 +66,6 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("search_index");
 		
 		// ユーザー検索
-//		mail = "test001";
-//		pass = "admin001";
 		List<ParentUser> parentUsers = parentUserRepositry.findByMailaddAndPw(mail, pass);
 		if (null == parentUsers || parentUsers.size() == 0) {
 			System.out.println("Failed to Find ParentUser.");
