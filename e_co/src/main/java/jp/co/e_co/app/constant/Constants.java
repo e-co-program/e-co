@@ -8,7 +8,7 @@ public final class Constants {
 	public static final int REDIS_TIME_OUT = 600;
 	
 	// APサーバーURL http://localhost:8080/ http://133.242.230.16
-	public static final String BASE_URL = "http://133.242.230.16";
+	public static final String BASE_URL = "http://localhost:8080/";
 	
 	// プロトコル
 	public static final String PROTOCOR = ":8080";
