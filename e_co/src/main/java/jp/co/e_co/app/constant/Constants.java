@@ -7,8 +7,8 @@ public final class Constants {
 	// Redis キー有効期限　seconds
 	public static final int REDIS_TIME_OUT = 600;
 	
-	// APサーバーURL http://localhost:8080/ http://133.242.230.16
-	public static final String BASE_URL = "http://localhost:8080/";
+	// APサーバーURL http://localhost http://133.242.230.16
+	public static final String BASE_URL = "http://localhost";
 	
 	// プロトコル
 	public static final String PROTOCOR = ":8080";

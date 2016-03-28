@@ -66,7 +66,7 @@ public class UserController {
 		parentUser.setMailadd(form.getEmail());
 		parentUser.setPw(form.getPassword());
 		// ユーザー情報更新(メールアドレス & パスワード)
-		ParentUser resultEntity = parentUserRepositry.save(parentUsers.get(0));
+		ParentUser resultEntity = parentUserRepositry.save(parentUser);
 		// 更新チェック
 		if (!resultEntity.getMailadd().equals(form.getEmail())
 				|| !resultEntity.getPw().equals(form.getPassword())) {

@@ -88,6 +88,8 @@ public class LoginController {
 		String sessionStr = RandomStringUtils.randomAlphanumeric(12);
 		System.out.println("sessionStr: " + sessionStr);
 		httpResponse.addCookie(new Cookie("eco-session", sessionStr));
+		// トランザクションサポート有効化
+		redisTemplate.setEnableTransactionSupport(true);
 		HashOperations<String, String, String> ops = redisTemplate.opsForHash();
 		ops.put(sessionStr, "USER_CODE", String.valueOf(parentUser.getParentUserCode()));
 		ops.put(sessionStr, "YOUCHIEN_CODE", String.valueOf(youchien.getYouchienCode()));
