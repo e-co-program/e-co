@@ -5,8 +5,10 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+@IdClass(ParentUserPk.class)
 @Entity
 @Table(name="tm_parent_user")
 public class ParentUser {
@@ -15,6 +17,7 @@ public class ParentUser {
 	@Column(name="youchien_code")
 	private long youchienCode;
 	
+	@Id
 	@Column(name="parent_user_code")
 	private long parentUserCode;
 	

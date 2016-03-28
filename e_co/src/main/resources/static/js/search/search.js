@@ -148,7 +148,7 @@ function PhotoInfoModelsArray() {
 	self.photoInfosArray = ko.observableArray();
 	
 	self.nextClick = function() {
-		self.offset += 5;
+		self.offset += 50;
 		console.log("Photo情報取得 next");
 		$.ajax({
 			type:"POST",	// method = "POST"
@@ -163,7 +163,7 @@ function PhotoInfoModelsArray() {
 				console.log("success");
 				console.log(data);
 				if (null == data || null == data.photoList || data.photoList.lenght == 0) {
-					self.offset -= 5;
+					self.offset -= 50;
 					alert( "写真情報の取得に失敗しました。" );
 					return;
 				}
@@ -173,7 +173,7 @@ function PhotoInfoModelsArray() {
 			},
 			error: function() {
 				console.log("error");
-				self.offset -= 5;
+				self.offset -= 50;
 				alert( "写真情報の取得に失敗しました。" );
 			},
 			complete: function() {
@@ -183,7 +183,7 @@ function PhotoInfoModelsArray() {
 	}
 	
 	self.prevClick = function() {
-		self.offset -= 5;
+		self.offset -= 50;
 		console.log("Photo情報取得 prev");
 		$.ajax({
 			type:"POST",	// method = "POST"
@@ -198,7 +198,7 @@ function PhotoInfoModelsArray() {
 				console.log("success");
 				console.log(data);
 				if (null == data || null == data.photoList || data.photoList.lenght == 0) {
-					self.offset += 5;
+					self.offset += 50;
 					alert( "写真情報の取得に失敗しました。" );
 					return;
 				}
@@ -208,7 +208,7 @@ function PhotoInfoModelsArray() {
 			},
 			error: function() {
 				console.log("error");
-				self.offset += 5;
+				self.offset += 50;
 				alert( "写真情報の取得に失敗しました。" );
 			},
 			complete: function() {
@@ -227,6 +227,7 @@ var convertToPhotoInfoModels = function(data) {
 	console.log("title: " + data.title);
 	photoInfoModelsArray.title(data.title);
 	var photoInfoModels = new PhotoInfoModels();
+	var index = 0;
 	for(var i in data.photoList) {
 		var photoInfoModel = new PhotoInfoModel();
 		photoInfoModel.url(data.photoList[i].url);
@@ -237,9 +238,12 @@ var convertToPhotoInfoModels = function(data) {
 			photoInfoModel.cIconUrl("img/search/check_on.png");
 		}
 		photoInfoModels.photoInfos.push(photoInfoModel);
-		if(i > 0 && i % 4 == 0) {
+		if(index == 4) {
 			photoInfoModelsArray.photoInfosArray.push(photoInfoModels);
-			photoInfoModels = new PhotoInfoModels()
+			photoInfoModels = new PhotoInfoModels();
+			index = 0;
+		} else {
+			index++;
 		}
 	}
 	if(photoInfoModels.photoInfos().length > 0) {
@@ -247,7 +251,7 @@ var convertToPhotoInfoModels = function(data) {
 	}
 	// 写真情報が取得できていたら
 	if (data.photoList.length > 0) {
-		photoInfoModelsArray.countStr(data.offset + " ～ " + (data.offset + data.photoList.length) + '枚/' + data.countAll + "枚");
+		photoInfoModelsArray.countStr((data.offset + 1) + " ～ " + (data.offset + data.photoList.length) + '枚/' + data.countAll + "枚");
 		if (!photoInfoModelsArray.photoShow()) {
 			photoInfoModelsArray.photoShow(true);
 		}

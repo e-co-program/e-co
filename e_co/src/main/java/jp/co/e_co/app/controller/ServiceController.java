@@ -103,6 +103,8 @@ public class ServiceController {
 			return null;
 		}
 		// expire延長
+		// トランザクションサポート有効化
+		redisTemplate.setEnableTransactionSupport(true);
 		redisTemplate.expire(request.getEcoId(), Constants.REDIS_TIME_OUT, TimeUnit.SECONDS);
 		
 		GetMenuInfoResponseModel response = new GetMenuInfoResponseModel();
@@ -279,6 +281,8 @@ public class ServiceController {
 			return null;
 		}
 		// expire延長
+		// トランザクションサポート有効化
+		redisTemplate.setEnableTransactionSupport(true);
 		redisTemplate.expire(request.getEcoId(), Constants.REDIS_TIME_OUT, TimeUnit.SECONDS);
 		
 		List<ParentUser> parentUsers = 
@@ -297,7 +301,7 @@ public class ServiceController {
 		if(null == fileList || fileList.length == 0) {
 			return null;
 		}
-		int countOfPage = 5;
+		int countOfPage = 50;
 		List<PhotoInfo> photoList = new ArrayList<>();
 		for(int i = request.getOffset(); i < fileList.length && i - request.getOffset() < countOfPage; i++) {
 			PhotoInfo photoInfo = new PhotoInfo();
@@ -362,6 +366,8 @@ public class ServiceController {
 			return null;
 		}
 		// expire延長
+		// トランザクションサポート有効化
+		redisTemplate.setEnableTransactionSupport(true);
 		redisTemplate.expire(request.getEcoId(), Constants.REDIS_TIME_OUT, TimeUnit.SECONDS);
 		
 		List<File> fileList = new ArrayList<>();
