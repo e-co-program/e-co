@@ -281,6 +281,12 @@ var slide = function(element, event) {
 // "年度タブ"クリックシ処理
 var changeYear = function(element) {
 	console.log("年度変更:" + element.id);
+	// 写真情報系クリア
+	photoInfoModelsArray.title(null);
+	photoInfoModelsArray.photoInfosArray.removeAll();
+	photoInfoModelsArray.photoShow(false);
+	photoInfoModelsArray.prev(false);
+	photoInfoModelsArray.next(false);
 	// メニュー情報取得
 	menuInfoLoad(element.id);
 	// 子要素取得
@@ -374,6 +380,11 @@ var menuInfoLoad = function(year) {
 		success: function(data) {
 			console.log("success");
 			console.log(data);
+			if (data == null) {
+				menuInfoModel.year(null);
+				menuInfoModel.menuInfo(null);
+				return;
+			}
 			menuInfoModel.year(data.mYear);
 			menuInfoModel.menuInfo(data.menuList);
 			console.log(menuInfoModel.menuInfo());
