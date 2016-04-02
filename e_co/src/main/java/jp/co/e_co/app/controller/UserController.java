@@ -90,7 +90,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/initial_registration", method=RequestMethod.POST)
+	@RequestMapping(value="/edit_profile", method=RequestMethod.POST)
 	public ModelAndView editProfile(@ModelAttribute("form") @Valid EditProfileForm form) {
 		System.out.println(form.toString());
 		return null;
