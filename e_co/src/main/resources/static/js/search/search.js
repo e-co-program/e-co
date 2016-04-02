@@ -41,6 +41,8 @@ function MenuInfoModel() {
 					alert( "写真情報の取得に失敗しました。" );
 					return;
 				}
+				// 注意事項非表示
+				$("#notes").hide();
 				// 写真情報クリア
 				photoInfoModelsArray.photoInfosArray.removeAll();
 				// オフセットクリア

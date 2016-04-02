@@ -358,3 +358,12 @@ section {
 	line-height: 1.4em;
 	font-weight: bold;
 }
+#notes {
+    border: #ffb6c1 solid 1px;
+    border-left: #ffb6c1 solid 10px;
+    padding: 20px;
+    background: #fff;
+}
+.paragraph {
+    margin-left: 2em;
+}
