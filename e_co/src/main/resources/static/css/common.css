@@ -447,6 +447,10 @@ body{
 	display: inline-block;
 	margin-left: 10px;
 }
+#footer a:hover{
+    color: #ff0000;
+    text-decoration: none;
+}
 
 /*-------- zoom --------*/ 
 .zoom_dl{
