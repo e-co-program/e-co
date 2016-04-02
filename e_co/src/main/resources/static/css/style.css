@@ -45,6 +45,10 @@ body, .item {
 	font-family: myfont;
 }
 
+.tab li:hover {
+	cursor: pointer;
+}
+
 /*-------- tab --------*/  
 .tab li{
 	list-style: none;
@@ -92,11 +96,15 @@ body, .item {
 .logout{
 	font-size: 12px;
 	font-family: myfont;
-	text-decoration: underline;
 	text-align: right;
 	top: -25px;
 	position: relative;
 }
+.logout a:hover{
+	color: #ff0000;
+	text-decoration: none;
+}
+
 .dl_btn{
 	width: 113px;
 	height: 52px;
@@ -108,6 +116,12 @@ body, .item {
 }
 .dl_text{
 	padding-top: 8px;
+}
+.dl_wrap:hover{
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	-ms-filter: "alpha(opacity=70)";
+	cursor: pointer;
 }
 .dl_wrap .dl_all{
 	font-family: myfont;
@@ -155,6 +169,11 @@ body, .item {
 
 
 #middle {
+}
+
+#side_menu a:hover{
+	color: #ff0000;
+	text-decoration: none;
 }
 
 #left_frame {
