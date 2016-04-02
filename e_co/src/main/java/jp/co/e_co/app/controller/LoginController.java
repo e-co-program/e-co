@@ -132,7 +132,12 @@ public class LoginController {
 	public String privacy() {
 		return "privacy";
 	}
-	
+
+	@RequestMapping("/qa")
+	public String qa() {
+		return "qa";
+	}
+
 	// 今年度を返す
 	private int getFiscalYear() {
 		Date date = new Date();
