@@ -49,12 +49,12 @@
         	<form action="/search" method="post">
         	<div id="login_info">
                 <div class="login_title">ID（メールアドレス）</div>
-            		<div class="login_form"><input type="email" name="mail" size="30"/></div>
+            		<div class="login_form"><input type="email" name="mail" size="28"/></div>
                         
             	<div class="login_title">パスワード</div>
-            		<div class="login_form"><input type="password" name="pass" size="30"/></div>
+            		<div class="login_form"><input type="password" name="pass" size="28"/></div>
             </div>
-            <input type="image" src="img/login/login.png" alt="ログインする" onMouseOver="this.src='img/login/login_on.png'" onMouseOut="this.src='img/login/login.png'"/>
+            <input type="image" id="image-btn" src="img/login/login.png" alt="ログインする" onMouseOver="this.src='img/login/login_on.png'" onMouseOut="this.src='img/login/login.png'"/>
             </form>
             <div class="registration"><a href="registration.html" th:href="@{/registration.html}"><img src="img/login/arrow.png" th:src="@{/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>はじめての方はこちら</a></div>
             <div class="registration"><a href="password.html" th:href="@{/password.html}"><img src="img/login/arrow.png" th:src="@{/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>パスワードを忘れた方はこちら</a></div>
