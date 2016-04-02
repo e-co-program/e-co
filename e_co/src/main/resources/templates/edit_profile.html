@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>イーコ | 新規会員登録</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" th:href="@{/css/common.css}" media="all"/>
+<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/css/reset.css}" media="all"/>
+<link type="text/css" rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/registration/registration.js" th:src="@{/js/registration/registration.js}"/>
+<script th:inline="javascript">
+	var message = /*[[${message}]]*/
+</script>
+<script type="text/javascript">
+	$(function() {
+	  $('#dialog').dialog({
+	    modal: true,
+	    autoOpen: false,
+	    dialogClass: 'noTitleDialog',
+	    buttons: {
+		    '閉じる' : function() {
+		      $(this).dialog('close');
+		    }
+		  }
+	  });
+	});
+</script>
+<style type="text/css">
+	.noTitleDialog .ui-dialog-titlebar {display:none;}
+</style>
+</head>
+
+<!-- お知らせダイアログ -->
+<div id="dialog" title="">
+  <p th:text="${message}"></p>
+</div>
+
+<body class="back">
+	<div id="main" style="padding: 30px;">
+   		<div id="login_left2">
+           <div id="login_logo"><img src="img/login/logo.png" th:src="@{/img/login/logo_font1_1.png}" alt="ロゴマーク"/></div>
+       	</div>
+        
+        <div id="login_right2">
+			<span style=" font-family: myfont; font-size: 18px;">下記のフォームを全て入力して登録しよう！</span>
+            <form action="/editProfile" method="post">
+				<table class="account">
+					<tr>
+						<th>施設コード<br />全12桁</th>
+                       	<td>
+                       		<input type="text" name="sisetuFirst" size="4" th:disabled="true"/> ー 
+                       		<input type="text" name="sisetuMiddle" size="4" th:disabled="true"/> ー 
+                       		<input type="text" name="sisetuLatter" size="4" th:disabled="true"/>
+                       	</td>
+                    </tr>
+                    <tr>
+               			<th>ID(メールアドレス)</th>
+                        <td><input type="email" id="email" name="email" size="50"/></td>
+                    </tr>
+                    <tr>
+               			<th>ID(確認用)</th>
+                        <td><input type="email" id="email_confirmation" name="email_confirmation" size="50" oninput="checkRepeatEmal(this)"/></td>
+                    </tr>
+                    <tr>
+               			<th>パスワード</th>
+                        <td><input type="password" id="password" name="password" size="50" pattern="^([a-zA-Z0-9]{8,13})$"/><br /><span style="font-size: 10px;">英数字を含む8〜13桁で入力して下さい</span></td>
+                    </tr>
+                    <tr>
+               			<th>パスワード(確認用)</th>
+                        <td><input type="password" id="password_confirmation" name="password_confirmation" size="50" oninput="checkPassword(this)"/></td>
+                    </tr>
+                    <tr>
+               			<th>利用規約・<br />個人情報保護方針</th>
+                        <td><a href="userpolicy.html" th:href="@{/userpolicy.html}" target="_blank">利用規約</a>　<a href="privacy.html" th:href="@{/privacy.html}" target="_blank">個人情報保護方針</a>　　<input type="checkbox" name="check" required="true"/>同意する</td>
+                    </tr>
+                </table>
+	            <div class="start">
+	            <div class="editPregistrationrofile"><span class="registration_text">同意して登録する</span></div>
+	            </div>
+            </form>
+    	</div>
+    </div>
+    <div id="footer" style="padding-top: 10px;">© 2016 WideVideo</div>
+</body>
+</html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import jp.co.e_co.app.controller.form.EditProfileForm;
 import jp.co.e_co.app.controller.form.RegistrationForm;
 import jp.co.e_co.app.entity.ParentUser;
 import jp.co.e_co.app.repository.ParentUserRepositry;
@@ -22,10 +23,18 @@ public class UserController {
 	@Autowired
 	ParentUserRepositry parentUserRepositry;
 
+	/** 初回登録 */
 	@RequestMapping("/registration")
 	public String registration() {
 		System.out.println("registration");
 		return "registration";
+	}
+	
+	/** プロフィール編集 */
+	@RequestMapping("/edit_profile")
+	public String editProfile() {
+		System.out.println("editProfile");
+		return "edit_profile";
 	}
 	
 	/**
@@ -79,5 +88,11 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("login");
 		mv.addObject("message", "登録が完了しました。");
 		return mv;
+	}
+	
+	@RequestMapping(value="/initial_registration", method=RequestMethod.POST)
+	public ModelAndView editProfile(@ModelAttribute("form") @Valid EditProfileForm form) {
+		System.out.println(form.toString());
+		return null;
 	}
 }
