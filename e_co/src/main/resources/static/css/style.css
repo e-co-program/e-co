@@ -20,6 +20,10 @@ body, .item {
 	overflow: auto;
 }
 
+a {
+    cursor: pointer;
+}
+
 /*-------- header --------*/
 #header_width {
 	background: url(../img/back.png) repeat;
@@ -116,6 +120,9 @@ body, .item {
 }
 .dl_text{
 	padding-top: 8px;
+}
+.dl_wrap {
+float: right;	
 }
 .dl_wrap:hover{
 	opacity: 0.7;
