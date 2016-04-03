@@ -144,7 +144,6 @@ body{
 .start, .profile{
 	width: 340px;
 	height: 108px;
-	background-image: url(../img/login/start.png);
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -155,7 +154,6 @@ body{
 }
 .start{
 	margin-left: 75px;
-	cursor: pointer;
 }
 .start_wrap a{
 	font-family: myfont;
@@ -177,12 +175,14 @@ body{
 	margin-left: 15px;
 }
 .registration {
-	padding-top: 30px;
+	position: relative;
+	top: 55px;
+	color: #fff;
 }
 .registration_text {
+	cursor: pointer;
 	font-family: myfont;
 	text-decoration: none;
-	color: #fff;
 	font-size: 28px;
 }
 
