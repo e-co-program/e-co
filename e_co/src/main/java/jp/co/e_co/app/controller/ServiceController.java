@@ -8,8 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,15 +18,16 @@ import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jp.co.e_co.app.bean.MenuInfoBean;
 import jp.co.e_co.app.bean.PhotoInfo;
+import jp.co.e_co.app.common.EcoLog;
+import jp.co.e_co.app.common.Utils;
 import jp.co.e_co.app.constant.Constants;
 import jp.co.e_co.app.entity.ParentUser;
-import jp.co.e_co.app.entity.Youchien;
+import jp.co.e_co.app.function.Authentication;
 import jp.co.e_co.app.repository.ParentUserRepositry;
 import jp.co.e_co.app.request.CreateDownLoadFile;
 import jp.co.e_co.app.request.GetMenuInfoRequestModel;
@@ -39,18 +38,12 @@ import jp.co.e_co.app.response.GetPhotoListResponseModel;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ServiceController {
@@ -77,27 +70,24 @@ public class ServiceController {
 		httpResponse.addHeader( "Access-Control-Allow-Methods", "POST" );
 		// キャッシュを有効にしたい場合は、こちらのコメントアウトを外します。
 //		httpResponse.addHeader( "Access-Control-Max-Age", "1000" );
-		System.out.println("year:" + request.getYear());
-		System.out.println("ecoId:" + request.getEcoId());
-		
-		Cookie[] cookies = httprRequest.getCookies();
-		System.out.println("cookies toString: " + cookies.toString());
-		for (Cookie cookie : cookies) {
-			try {
-				System.out.println("cookie name: " + cookie.getName());
-				System.out.println("cookie value: " + URLDecoder.decode(cookie.getValue(), "UTF-8"));
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
+		if (EcoLog.DEBUG) {
+			EcoLog.printOut("getMenuInfo(): year=" + request.getYear() 
+					+ ", ecoId=" + request.getEcoId());
 		}
-		
-		if(null == request.getEcoId()) {
-			System.out.println("ecoIdなし");
+
+		// 認証処理
+		Authentication authentication = new Authentication(httprRequest, request.getEcoId());
+		if (!authentication.execute()) {
+			System.out.println("getMenuInfo(): 認証に失敗しました。");
 			return null;
 		}
+		System.out.println("getMenuInfo(): 認証に成功しました。");
+		
+		// cookieからセッションID取得
+		String sessionId = Utils.extractEcoSessionId(httprRequest);
 		// セッション内容確認	
-		String userCode = (String) redisTemplate.opsForHash().get(request.getEcoId(), "USER_CODE");
-		String youchienCode = (String) redisTemplate.opsForHash().get(request.getEcoId(), "YOUCHIEN_CODE");
+		String userCode = (String) redisTemplate.opsForHash().get(sessionId, "USER_CODE");
+		String youchienCode = (String) redisTemplate.opsForHash().get(sessionId, "YOUCHIEN_CODE");
 		if (userCode == null || youchienCode == null) {
 			System.out.println("USER_CODE or YOUCHIEN_CODEがみつかりません。");
 			return null;
@@ -105,7 +95,7 @@ public class ServiceController {
 		// expire延長
 		// トランザクションサポート有効化
 		redisTemplate.setEnableTransactionSupport(true);
-		redisTemplate.expire(request.getEcoId(), Constants.REDIS_TIME_OUT, TimeUnit.SECONDS);
+		redisTemplate.expire(sessionId, Constants.REDIS_TIME_OUT, TimeUnit.SECONDS);
 		
 		GetMenuInfoResponseModel response = new GetMenuInfoResponseModel();
 		response.setmYear(request.getYear());
@@ -231,9 +221,11 @@ public class ServiceController {
 			if(childFileList != null && childFileList.length > 0) {
 				for(File chileFile : childFileList) {
 					if(chileFile.isDirectory()) {
-						System.out.println("メニュー：" + menuInfoBean.getName() + " Type0セット");
 						menuInfoBean.setType(0);	// タイプ 0：メインメニュー　1：サブメニュー
-						System.out.println("type：" + menuInfoBean.getType());
+						if (EcoLog.DEBUG) {
+							EcoLog.printOut("メニュー：" + menuInfoBean.getName() + " Type0セット");
+							EcoLog.printOut("type：" + menuInfoBean.getType());
+						}
 						break;
 					}
 				}
@@ -270,12 +262,24 @@ public class ServiceController {
 			System.out.println("idなし");
 			return null;
 		}
-		System.out.println("year:" + request.getYear() + " id:" + request.getId()
-				+ " offset:" + request.getOffset()
-				+ " ecoId:" + request.getEcoId());
+		if (EcoLog.DEBUG) {
+			EcoLog.printOut("year:" + request.getYear() + " id:" + request.getId()
+					+ " offset:" + request.getOffset()
+					+ " ecoId:" + request.getEcoId());
+		}
+		// 認証処理
+		Authentication authentication = new Authentication(httprRequest, request.getEcoId());
+		if (!authentication.execute()) {
+			System.out.println("getPhotoList(): 認証に失敗しました。");
+			return null;
+		}
+		System.out.println("getPhotoList(): 認証に成功しました。");
+		
+		// cookieからセッションID取得
+		String sessionId = Utils.extractEcoSessionId(httprRequest);
 		// セッション内容確認	
-		String userCode = (String) redisTemplate.opsForHash().get(request.getEcoId(), "USER_CODE");
-		String youchienCode = (String) redisTemplate.opsForHash().get(request.getEcoId(), "YOUCHIEN_CODE");
+		String userCode = (String) redisTemplate.opsForHash().get(sessionId, "USER_CODE");
+		String youchienCode = (String) redisTemplate.opsForHash().get(sessionId, "YOUCHIEN_CODE");
 		if (userCode == null || youchienCode == null) {
 			System.out.println("USER_CODE or YOUCHIEN_CODEがみつかりません。");
 			return null;
