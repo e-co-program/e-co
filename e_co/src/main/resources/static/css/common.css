@@ -175,6 +175,7 @@ body{
 	margin-left: 15px;
 }
 .registration {
+	cursor: pointer;
 	position: relative;
 	top: 55px;
 	color: #fff;
