@@ -9,11 +9,10 @@ import java.util.concurrent.TimeUnit;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import jp.co.e_co.app.bean.EcoInfo;
+import jp.co.e_co.app.common.Utils;
 import jp.co.e_co.app.constant.Constants;
-import jp.co.e_co.app.controller.form.RegistrationForm;
 import jp.co.e_co.app.entity.ParentUser;
 import jp.co.e_co.app.entity.Youchien;
 import jp.co.e_co.app.repository.ParentUserRepositry;
@@ -26,8 +25,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -97,7 +94,7 @@ public class LoginController {
 		
 		
 		// 今年度取得
-		int fiscaYear = getFiscalYear();
+		int fiscaYear = Utils.getFiscalYear();
 		// 年度タブ情報
 		String[] years = {String.valueOf(fiscaYear), String.valueOf(fiscaYear - 1), String.valueOf(fiscaYear - 2), String.valueOf(fiscaYear -3)};
 		// Eco情報
