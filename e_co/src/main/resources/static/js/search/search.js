@@ -345,45 +345,48 @@ var downLoad = function() {
 	if (checkedPhotos.length == 0) {
 		return;
 	}
-//	alert("ダウンロード開始します。");
-	$.ajax({
-		type: 'POST',	// method = "GET"
-		url: ecoInfo.baseUrl + '/createDownLoadFile',	// 送信先のURL
-		data: JSON.stringify({
-			ecoId : getCookie("eco-session"),
-			photoIds : checkedPhotos}),	// JSONデータ本体
-		contentType: 'application/json', // リクエストの Content-Type
-		success: function(data) {
-			console.log("success");
-			if (data == null || data.downLoadFileName == null) {
-				return;
-			}
-			location.href = ecoInfo.baseUrl + "/photoDownLoad?fileName=" + data.downLoadFileName
-				+ "&youchien=" + data.youchienCode;
-			// TODO:チャッククリア処理を追加する
-			// 全行の写真情報
-			var photoInfosArray = photoInfoModelsArray.photoInfosArray();
-			for (var i = 0; i < photoInfosArray.length; i++) {
-				// 1行分の写真情報
-				var photoInfos = photoInfosArray[i].photoInfos();
-				for (var j = 0; j < photoInfos.length; j++) {
-					var photoInfo = photoInfos[j];
-					photoInfo.checked(false);
-					photoInfo.cIconUrl("img/search/check_off.png");
+	jConfirm('ダウンロードを開始します。\n開始までしばらく時間がかかる事があります。', '写真ダウンロード', function(r) {
+		if (r) {
+			$.ajax({
+				type: 'POST',	// method = "GET"
+				url: ecoInfo.baseUrl + '/createDownLoadFile',	// 送信先のURL
+				data: JSON.stringify({
+					ecoId : getCookie("eco-session"),
+					photoIds : checkedPhotos}),	// JSONデータ本体
+				contentType: 'application/json', // リクエストの Content-Type
+				success: function(data) {
+					console.log("success");
+					if (data == null || data.downLoadFileName == null) {
+						return;
+					}
+					location.href = ecoInfo.baseUrl + "/photoDownLoad?fileName=" + data.downLoadFileName
+						+ "&youchien=" + data.youchienCode;
+					// TODO:チャッククリア処理を追加する
+					// 全行の写真情報
+					var photoInfosArray = photoInfoModelsArray.photoInfosArray();
+					for (var i = 0; i < photoInfosArray.length; i++) {
+						// 1行分の写真情報
+						var photoInfos = photoInfosArray[i].photoInfos();
+						for (var j = 0; j < photoInfos.length; j++) {
+							var photoInfo = photoInfos[j];
+							photoInfo.checked(false);
+							photoInfo.cIconUrl("img/search/check_off.png");
+						}
+					}
+					// 選択写真保持配列クリア
+					checkedPhotos = [];
+					// 選択写真数初期化
+					downLoadModel.count(0);
+				},
+				error: function() {
+					console.log("error");
+				},
+				complete: function() {
+					console.log("complete");
 				}
-			}
-			// 選択写真保持配列クリア
-			checkedPhotos = [];
-			// 選択写真数初期化
-			downLoadModel.count(0);
-		},
-		error: function() {
-			console.log("error");
-		},
-		complete: function() {
-			console.log("complete");
+			});
 		}
-	});
+     });
 }
 
 // onloadでコール
