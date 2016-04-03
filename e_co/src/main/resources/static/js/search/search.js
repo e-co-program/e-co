@@ -345,6 +345,7 @@ var downLoad = function() {
 	if (checkedPhotos.length == 0) {
 		return;
 	}
+//	alert("ダウンロード開始します。");
 	$.ajax({
 		type: 'POST',	// method = "GET"
 		url: ecoInfo.baseUrl + '/createDownLoadFile',	// 送信先のURL
