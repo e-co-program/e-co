@@ -12,49 +12,8 @@
 var ecoInfo = /*[[${EcoInfo}]]*/
 </script>
 <script type="text/javascript" src="js/search/search.js" th:src="@{/js/search/search.js}"/>
-<script type="text/javascript">
-$(function(){
-	$('.close,.modalBK').click(function(){
-		$('.modal').hide();
-	});
-});
-</script>
-<script type="text/javascript" src="js/easySlider1.7.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){	
-    $("#slider").easySlider({
-    speed: 1000,  // スクロールスピード設定
-    pause: 7000,  // 表示時間設定
-    auto: false, 
-    continuous: true
-    });
-    });	
-</script>
-<style type="text/css">
-.modal{display:none;}
-.modalBody{position: fixed; z-index:1000; background: #000; width:50%; height:50%;}
-.modalBK{position: fixed; z-index:999; height:100%; width:100%;background:#000; opacity: 0.9;filter: alpha(opacity=90);-moz-opacity:0.90;}
-</style>
-<style type="text/css">
-/*-- 装飾用CSS --*/
-.btns{font-size: 80px; width:150px; background:#111; height: 150px; line-height:150px; text-align:center; font-family: arial; color: #fff; float: left; margin:10px; cursor: pointer}
-.close{cursor: pointer;}
-.modal{width:100%; color: #eee; margin-top: -100px;}
-.modal p{font-size:12px; text-align:justify;}
-.modal h1{font-weight:bold; font-size: 30px;}
-</style>
-<div class="modal">
-	<div class="modalBody">
-		<p class="close">×close</p>
-		<h1>Window - 1</h1>
-		<!-- <p><img src="img/mdthumb.png"/></p> -->
-		<p>ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。ダミーテキスト。</p>
-	</div><!-- close.modalBody -->
-	<div class="modalBK"></div><!-- close.modalBK -->
-</div>
 </head>
 <body>
-
 	<div id="header_width" >
 		<div id="header"><!-- header -->
        		<div id="s_logo"><img src="img/search/logo.png" th:src="@{/img/search/logo_font1.png}" alt="ロゴマーク" height="60px"/></div>
@@ -178,7 +137,7 @@ $(function(){
 		        <div class="photo">
 		        	<!-- ko foreach: photoInfos -->
 		        	<div class="select">
-						<div class="subnaile"><img data-bind="attr: { src: url }, click:modal, clickBubble:false"/></div>
+						<div class="subnaile"><img data-bind="attr: { src: url }, clickBubble:false"/></div>
 						<div class="icon"><img data-bind="click:photoCheck, attr: { src: cIconUrl }"/></div>
 					</div>
 					<!-- /ko -->
