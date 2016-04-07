@@ -1,5 +1,12 @@
 	@charset "UTF-8";
 /* CSS Document */
+.text-align-right {
+	text-align: right;
+}
+
+.text-align-center {
+	text-align: center;
+}
 
 a img{border-style: none}
 body{
