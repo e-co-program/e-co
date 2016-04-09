@@ -154,11 +154,6 @@ body{
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.start:hover{
-	position:relative;
-	top:3px;
-	left:3px;
-}
 .start{
 	margin-left: 75px;
 }
@@ -193,6 +188,16 @@ body{
 	text-decoration: none;
 	font-size: 28px;
 }
+.registration_text:hover {
+	position:relative;
+	top:3px;
+	left:3px;
+	cursor: pointer;
+	font-family: myfont;
+	text-decoration: none;
+	font-size: 28px;
+}
+
 
 /*-------------- search --------------*/  
 /*-------- header --------*/  
