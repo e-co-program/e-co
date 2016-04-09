@@ -24,14 +24,14 @@ public class UserController {
 	ParentUserRepositry parentUserRepositry;
 
 	/** 初回登録 */
-	@RequestMapping("/registration")
+	@RequestMapping("/eco/registration")
 	public String registration() {
 		System.out.println("registration");
 		return "registration";
 	}
 	
 	/** プロフィール編集 */
-	@RequestMapping("/edit_profile")
+	@RequestMapping("/eco/edit_profile")
 	public String editProfile() {
 		System.out.println("editProfile");
 		return "edit_profile";
@@ -43,7 +43,7 @@ public class UserController {
 	 * @param bindingResult
 	 * @return
 	 */
-	@RequestMapping(value="/initial_registration", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/initial_registration", method=RequestMethod.POST)
 	public ModelAndView initialRegistration(
 			@ModelAttribute("form") @Valid RegistrationForm form,
 			BindingResult bindingResult) {
@@ -90,7 +90,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/edit_profile", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/edit_profile", method=RequestMethod.POST)
 	public ModelAndView editProfile(@ModelAttribute("form") @Valid EditProfileForm form) {
 		System.out.println(form.toString());
 		return null;

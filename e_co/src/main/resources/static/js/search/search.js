@@ -27,7 +27,7 @@ function MenuInfoModel() {
 		self.searchMenuId = menuInfo.id;	// 検索対象IDセット
 		$.ajax({
 			type:"POST",	// method = "POST"
-			url: ecoInfo.baseUrl + '/getPhotoList',	// 送信先のURL
+			url: ecoInfo.baseUrl + '/eco/getPhotoList',	// 送信先のURL
 			data: JSON.stringify({ year: self.year(),
 				id : menuInfo.id,
 				offset : 0,
@@ -85,7 +85,7 @@ function PhotoInfoModel() {
 	
 	self.checked = ko.observable(false);
 	
-	self.cIconUrl = ko.observable("img/search/check_off.png");
+	self.cIconUrl = ko.observable("/eco/img/search/check_off.png");
 	
 	self.photoCheck = function(photoInfo) {
 		console.log("写真チェック");
@@ -96,12 +96,12 @@ function PhotoInfoModel() {
 		if (index == -1) {
 			checkedPhotos.push(photoInfo.photoId);
 			photoInfo.checked(true);
-			photoInfo.cIconUrl("img/search/check_on.png");
+			photoInfo.cIconUrl("/eco/img/search/check_on.png");
 			count++;
 		} else {
 			checkedPhotos.splice(index, 1);
 			photoInfo.checked(false);
-			photoInfo.cIconUrl("img/search/check_off.png");
+			photoInfo.cIconUrl("/eco/img/search/check_off.png");
 			count--;
 		}
 		downLoadModel.count(count);
@@ -154,7 +154,7 @@ function PhotoInfoModelsArray() {
 		console.log("Photo情報取得 next");
 		$.ajax({
 			type:"POST",	// method = "POST"
-			url: ecoInfo.baseUrl + '/getPhotoList',	// 送信先のURL
+			url: ecoInfo.baseUrl + '/eco/getPhotoList',	// 送信先のURL
 			data: JSON.stringify({ year: menuInfoModel.year(),
 				id : menuInfoModel.searchMenuId,
 				offset : self.offset,
@@ -189,7 +189,7 @@ function PhotoInfoModelsArray() {
 		console.log("Photo情報取得 prev");
 		$.ajax({
 			type:"POST",	// method = "POST"
-			url: ecoInfo.baseUrl + '/getPhotoList',	// 送信先のURL
+			url: ecoInfo.baseUrl + '/eco/getPhotoList',	// 送信先のURL
 			data: JSON.stringify({ year: menuInfoModel.year(),
 				id : menuInfoModel.searchMenuId,
 				offset : self.offset,
@@ -237,7 +237,7 @@ var convertToPhotoInfoModels = function(data) {
 		// 選択済みの写真ならチェックを付ける
 		if (checkedPhotos.indexOf(data.photoList[i].photoId) >= 0) {
 			photoInfoModel.checked(true);
-			photoInfoModel.cIconUrl("img/search/check_on.png");
+			photoInfoModel.cIconUrl("/eco/img/search/check_on.png");
 		}
 		photoInfoModels.photoInfos.push(photoInfoModel);
 		if(index == 4) {
@@ -309,16 +309,16 @@ var changeYear = function(element) {
 		if (targetIndex == i) {
 			switch (i) {
 			case 0:
-				$("#" + years[i]).children('img').attr("src", "/img/search/first_on.png");
+				$("#" + years[i]).children('img').attr("src", "/eco/img/search/first_on.png");
 				break;
 			case 1:
-				$("#" + years[i]).children('img').attr("src", "/img/search/second_on.png");
+				$("#" + years[i]).children('img').attr("src", "/eco/img/search/second_on.png");
 				break;
 			case 2:
-				$("#" + years[i]).children('img').attr("src", "/img/search/third_on.png");
+				$("#" + years[i]).children('img').attr("src", "/eco/img/search/third_on.png");
 				break;
 			case 3:
-				$("#" + years[i]).children('img').attr("src", "/img/search/force_on.png");
+				$("#" + years[i]).children('img').attr("src", "/eco/img/search/force_on.png");
 				break
 			default:
 				break;
@@ -326,7 +326,7 @@ var changeYear = function(element) {
 			continue;
 		}
 		
-		$("#" + years[i]).children('img').attr("src", "/img/search/tab_off.png");
+		$("#" + years[i]).children('img').attr("src", "/eco/img/search/tab_off.png");
 	}
 	
 	
@@ -349,7 +349,7 @@ var downLoad = function() {
 		if (r) {
 			$.ajax({
 				type: 'POST',	// method = "GET"
-				url: ecoInfo.baseUrl + '/createDownLoadFile',	// 送信先のURL
+				url: ecoInfo.baseUrl + '/eco/createDownLoadFile',	// 送信先のURL
 				data: JSON.stringify({
 					ecoId : getCookie("eco-session"),
 					photoIds : checkedPhotos}),	// JSONデータ本体
@@ -359,7 +359,7 @@ var downLoad = function() {
 					if (data == null || data.downLoadFileName == null) {
 						return;
 					}
-					location.href = ecoInfo.baseUrl + "/photoDownLoad?fileName=" + data.downLoadFileName
+					location.href = ecoInfo.baseUrl + "/eco/photoDownLoad?fileName=" + data.downLoadFileName
 						+ "&youchien=" + data.youchienCode;
 					// TODO:チャッククリア処理を追加する
 					// 全行の写真情報
@@ -370,7 +370,7 @@ var downLoad = function() {
 						for (var j = 0; j < photoInfos.length; j++) {
 							var photoInfo = photoInfos[j];
 							photoInfo.checked(false);
-							photoInfo.cIconUrl("img/search/check_off.png");
+							photoInfo.cIconUrl("/eco/img/search/check_off.png");
 						}
 					}
 					// 選択写真保持配列クリア
@@ -394,7 +394,7 @@ var menuInfoLoad = function(year) {
 	// メニュー情報取得
 	$.ajax({
 		type: 'POST',	// method = "POST"
-		url: ecoInfo.baseUrl + '/getMenuInfo',	// 送信先のURL
+		url: ecoInfo.baseUrl + '/eco/getMenuInfo',	// 送信先のURL
 		data: JSON.stringify({ year : year,
 			ecoId : getCookie("eco-session")}),	// JSONデータ本体
 		contentType: 'application/json', // リクエストの Content-Type
