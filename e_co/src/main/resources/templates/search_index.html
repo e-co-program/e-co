@@ -18,7 +18,8 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 <body>
 	<div id="header_width" >
 		<div id="header"><!-- header -->
-       		<div id="s_logo"><img src="img/search/logo.png" th:src="@{/img/search/logo_font1.png}" alt="ロゴマーク" height="60px"/></div>
+       		<div id="s_logo">
+       		<input type="image" src="img/search/logo_font1.png" height="60px" onclick="TopClick()" /></div>
        		<div id="name" th:text="${EcoInfo.kindergartenName}">===幼稚園名が入る===</div>
                <ul class="tab">
                    <li th:id="${years[0]}" onClick="changeYear(this)"><img src="img/search/first_on.png" th:src="@{/img/search/first_on.png}" alt="今年度"/><span class="ad_select" th:text="${years[0]}">===今年度が入る===</span></li>
