@@ -9,6 +9,21 @@ function DownLoadModel() {
 
 var downLoadModel = new DownLoadModel();
 
+function TopClick() {
+	// 注意事項非表示
+	$("#notes").show();
+	// 写真情報系クリア
+	photoInfoModelsArray.title(null);
+	photoInfoModelsArray.photoInfosArray.removeAll();
+	photoInfoModelsArray.photoShow(false);
+	photoInfoModelsArray.prev(false);
+	photoInfoModelsArray.next(false);
+	// 現在開いてるメニュー情報取得
+	var year = menuInfoModel.year();
+	menuInfoLoad(year);
+	
+} 
+
 /**
  * メニュー情報モデル
  */
