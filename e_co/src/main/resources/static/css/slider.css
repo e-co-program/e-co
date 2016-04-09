@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.text-align-center {
+	text-align: center;
+}
+
+.font-size-80 {
+	font-size: 80%;
+}
+
+.line-height-05 {
+	line-height: 0.5em;
+}
+
 a img{ border-style: none }
 
 /* Easy Slider */
