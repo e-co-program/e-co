@@ -193,9 +193,9 @@ float: right;
 
 /*-------- nav --------*/
 nav {
-	float: left;;
-	width: 220px;
-	margin-left: 200px;
+	float: left;
+	width: 280px;
+	margin-left: 140px;
 	//padding-left: 200px;
 }
 nav p{
@@ -268,6 +268,10 @@ section {
 .page_link{
 	background: #fff;
 	color: #8c775d;
+}
+.page_link:hover{
+	background: #FFCC66;
+	cursor: pointer;
 }
 .page li a{
 	text-decoration: none;

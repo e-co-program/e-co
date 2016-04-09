@@ -9,6 +9,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 
+import jp.co.e_co.app.constant.Constants;
+
 public final class Utils {
 
 	/**
@@ -53,5 +55,29 @@ public final class Utils {
 			year--;
 		}
 		return year;
+	}
+	
+	/**
+	 * APサーバーURLを返す.
+	 *
+	 * @return APサーバーURL
+	 */
+	public static String getBaseUrl() {
+		if (Constants.ACTION_TYPE) {
+			return Constants.BASE_URL;
+		}
+		return Constants.ROCAL_BASE_URL + Constants.PROTOCOR;
+	}
+	
+	/**
+	 * サンプルディレクトリのパスを返す.
+	 *
+	 * @return サンプルディレクトリのパス
+	 */
+	public static String getSamplDirePath() {
+		if (Constants.ACTION_TYPE) {
+			return Constants.SAMPLE_DIRE_PATH;
+		}
+		return Constants.ROCAL_SAMPLE_DIRE_PATH;
 	}
 }
