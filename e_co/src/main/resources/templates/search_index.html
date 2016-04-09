@@ -5,9 +5,10 @@
 <link rel="stylesheet" href="style.css" th:href="@{/eco/css/style.css}" media="all"/>
 <!--<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/eco/css/reset.css}" media="all"/>-->
 <link rel="stylesheet" type="text/css" href="css/slider.css" th:href="@{/eco/css/slider.css}" media="all" />
+<link rel="stylesheet" type="text/css" href="css/lightbox.css" th:href="@{/eco/css/lightbox.css}" media="all"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <script type="text/javascript" src="knockout-3.3.0.js" th:src="@{/eco/js/knockout-3.3.0.js}"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
 <script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/eco/js/jquery.alerts.js}"/>
 <link href="css/jquery.alerts.css" th:href="@{/eco/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
 <script th:inline="javascript">
@@ -41,7 +42,7 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 		    <li><a href="/eco/qa" target="_top">Q＆Ａ</a></li>
 		    <li><a href="/eco/userpolicy" target="_top">利用規約</a></li>
 			<li><a href="/eco/privacy" target="_top">プライバシーポリシー</a></li>
-		    <li>© 2016 WideVideo</li>
+		    <li>© 2016 WideVideo Inc.</li>
 	    </ul>
 		</div>
 	</div>
@@ -141,7 +142,7 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 		        <div class="photo">
 		        	<!-- ko foreach: photoInfos -->
 		        	<div class="select">
-						<div class="subnaile"><img data-bind="attr: { src: url }, clickBubble:false"/></div>
+						<div class="subnaile"><a data-bind="attr: { href: url }" data-lightbox="group"><img data-bind="attr: { src: url }, clickBubble:false"/></a></div>
 						<div class="icon"><img data-bind="click:photoCheck, attr: { src: cIconUrl }"/></div>
 					</div>
 					<!-- /ko -->
@@ -149,6 +150,19 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 		        <!-- /ko -->
 			<div class="clear"></div>
 		</div><!-- view_end -->
+	</script>
+	<script type="text/javascript" src="./js/lightbox.js" th:src="@{/eco/js/lightbox.js}"></script>
+	<script>
+		lightbox.option({
+			'fitImagesInViewport' : true,
+			'showImageNumberLabel': true,
+			'alwaysShowNavOnTouchDevices': false,
+			'fadeDuration': 100,
+			'resizeDuration': 500,
+			'positionFromTop': 100,
+			'maxWidth':800,
+			'maxHeight':600,
+		})
 	</script>
 </body>
 </html>
