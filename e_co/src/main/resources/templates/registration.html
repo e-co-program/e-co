@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <title>イーコ | 新規会員登録</title>
-<link rel="stylesheet" type="text/css" href="css/common.css" th:href="@{/css/common.css}" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/css/reset.css}" media="all"/>
+<link rel="stylesheet" type="text/css" href="css/common.css" th:href="@{/eco/css/common.css}" media="all"/>
+<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/eco/css/reset.css}" media="all"/>
 <link type="text/css" rel="stylesheet"
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
-<script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/js/jquery.alerts.js}"/>
-<link href="css/jquery.alerts.css" th:href="@{/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="js/registration/registration.js" th:src="@{/js/registration/registration.js}"/>
+<script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/eco/js/jquery.alerts.js}"/>
+<link href="css/jquery.alerts.css" th:href="@{/eco/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="js/registration/registration.js" th:src="@{/eco/js/registration/registration.js}"/>
 <script th:inline="javascript">
 	var message = /*[[${message}]]*/
 </script>
@@ -18,12 +18,12 @@
 <body class="back">
 	<div id="main" style="padding: 30px;">
    		<div id="login_left2">
-           <div id="login_logo"><img src="img/login/logo.png" th:src="@{/img/login/logo_font1_1.png}" alt="ロゴマーク"/></div>
+           <div id="login_logo"><img src="img/login/logo.png" th:src="@{/eco/img/login/logo_font1_1.png}" alt="ロゴマーク"/></div>
        	</div>
         
         <div id="login_right2">
 			<span style=" font-family: myfont; font-size: 18px;">下記のフォームを全て入力して登録しよう！</span>
-            <form action="/initial_registration" method="post">
+            <form action="/eco/initial_registration" method="post">
 				<table class="account">
 					<tr>
 						<th>施設コード<br />全12桁</th>
@@ -88,17 +88,17 @@
                     -->
                     <tr>
                			<th>利用規約・<br />個人情報保護方針</th>
-                        <td><a href="userpolicy.html" th:href="@{/userpolicy.html}" target="_blank">利用規約</a>　<a href="privacy.html" th:href="@{/privacy.html}" target="_blank">個人情報保護方針</a>　　<input type="checkbox" name="check" required="true"/>同意する</td>
+                        <td><a href="userpolicy.html" th:href="@{/eco/userpolicy}" target="_blank">利用規約</a>　<a href="privacy.html" th:href="@{/eco/privacy}" target="_blank">個人情報保護方針</a>　　<input type="checkbox" name="check" required="true"/>同意する</td>
                     </tr>
                 </table>
 				<!--
 	            <p style="font-size: 12px;">※弟妹の登録はログイン後のプロフィール編集から行ってください</p>
 	            <div class="start_wrap"><a href="search_index.html" th:href="@{/search_index.html}"><div class="start"><div class="start_text">同意して登録する</div></div></a></div>
 				-->
-	            <input class="registration_text" src="../img/login/start.png" type="image" alt="同意して登録する"/>
+	            <input class="registration_text" src="../eco/img/login/start.png" type="image" alt="同意して登録する"/>
             </form>
     	</div>
     </div>
-    <div id="footer" style="padding-top: 10px;">© 2016 WideVideo</div>
+    <div id="footer" style="padding-top: 10px;">© 2016 WideVideo Inc.</div>
 </body>
 </html>

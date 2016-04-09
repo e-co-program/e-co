@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://133.242.230.16/eco
+    url: jdbc:postgresql://153.127.192.175/eco
     driverClassName: org.postgresql.Driver
     username: eco
     password: eco

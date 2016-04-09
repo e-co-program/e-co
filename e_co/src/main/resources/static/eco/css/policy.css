@@ -1,0 +1,32 @@
+	@charset "UTF-8";
+/* CSS Document */
+
+.small-header {
+	font-size: large;
+	position: relative;
+	padding: .25em 0 .5em .75em;
+	border-left: 6px solid #FF0000;
+}
+.small-header::after {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	content: '';
+	width: 100%;
+	height: 0;
+	border-bottom: 1px solid #ccc;
+}
+#main {
+	background-color: #FFFFFF;
+	font-size: small;
+}
+.updated-date {
+	text-align: right;
+}
+.border {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 1px 0 rgba(255,255,255,1);
+}
+.paragraph {
+	margin-left: 2em;
+}

@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <title>クラウド型 写真・動画ダウンロードシステム | イーコ</title>
-<link rel="stylesheet" type="text/css" href="css/common.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/reset.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="/eco/css/common.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="/eco/css/reset.css" media="all"/>
 <link type="text/css" rel="stylesheet"
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
 <script type="text/javascript"
   src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
-<script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/js/jquery.alerts.js}"/>
-<link href="css/jquery.alerts.css" th:href="@{/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="js/login/login.js" th:src="@{/js/login/login.js}"/>
+<script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/eco/js/jquery.alerts.js}"/>
+<link href="css/jquery.alerts.css" th:href="@{/eco/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="js/login/login.js" th:src="@{/eco/js/login/login.js}"/>
 <script th:inline="javascript">
 	var message = /*[[${message}]]*/
 </script>
@@ -20,11 +20,11 @@
 <body class="back">
 	<div id="main" style="padding: 30px;">
     		<div id="login_left">
-            <div id="login_logo"><img src="img/login/logo_font1_1.png" alt="ロゴマーク"/></div>
+            <div id="login_logo"><img src="/eco/img/login/logo_font1_1.png" alt="ロゴマーク"/></div>
         </div>
         
         <div id="login_right">
-        	<form action="/search" method="post">
+        	<form action="/eco/search" method="post">
         	<div id="login_info">
                 <div class="login_title">ID（メールアドレス）</div>
             		<div class="login_form"><input type="email" name="mail" size="28"/></div>
@@ -32,14 +32,14 @@
             	<div class="login_title">パスワード</div>
             		<div class="login_form"><input type="password" name="pass" size="28"/></div>
             </div>
-            <input type="image" id="image-btn" src="img/login/login.png" alt="ログインする" onMouseOver="this.src='img/login/login_on.png'" onMouseOut="this.src='img/login/login.png'"/>
+            <input type="image" id="image-btn" src="/eco/img/login/login.png" alt="ログインする" onMouseOver="this.src='/eco/img/login/login_on.png'" onMouseOut="this.src='/eco/img/login/login.png'"/>
             </form>
-            <div class="registration"><a href="registration.html" th:href="@{/registration.html}"><img src="img/login/arrow.png" th:src="@{/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>はじめての方はこちら</a></div>
-            <div class="registration"><a href="https://docs.google.com/forms/d/1h1CzFrdCEcNbxKUfChMTiEkSrY33hCCwl81RDTDrc7M/viewform?usp=send_form"><img src="img/login/arrow.png" th:src="@{/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>お問い合わせのある方はこちら</a></div>
+            <div class="registration"><a href="registration.html" th:href="@{/eco/registration}"><img src="img/login/arrow.png" th:src="@{/eco/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>はじめての方はこちら</a></div>
+            <div class="registration"><a href="https://docs.google.com/forms/d/1h1CzFrdCEcNbxKUfChMTiEkSrY33hCCwl81RDTDrc7M/viewform?usp=send_form"><img src="img/login/arrow.png" th:src="@{/eco/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>お問い合わせのある方はこちら</a></div>
             <!-- <div class="registration"><a href="password.html" th:href="@{/password.html}"><img src="img/login/arrow.png" th:src="@{/img/login/arrow.png}" width="20" style="margin-right: 5px;"/>パスワードを忘れた方はこちら</a></div> -->
         </div>
     </div>
     
-    <div id="footer" style="padding-top: 50px;">© 2016 WideVideo</div>
+    <div id="footer" style="padding-top: 50px;">© 2016 WideVideo Inc.</div>
 </body>
 </html>

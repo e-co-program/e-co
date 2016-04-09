@@ -43,7 +43,7 @@ public class LoginController {
 	@Autowired
 	StringRedisTemplate redisTemplate;
 	
-	@RequestMapping("/login")
+	@RequestMapping("/eco/login")
 	public String login() {
 		return "login";
 	}
@@ -54,7 +54,7 @@ public class LoginController {
 	 * @param pass
 	 * @return
 	 */
-	@RequestMapping(value="/search", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/search", method=RequestMethod.POST)
 	public ModelAndView post(@RequestParam("mail") String mail, @RequestParam("pass") String pass,
 			HttpServletRequest httprRequest,
 			HttpServletResponse httpResponse,
@@ -99,7 +99,8 @@ public class LoginController {
 		String[] years = {String.valueOf(fiscaYear), String.valueOf(fiscaYear - 1), String.valueOf(fiscaYear - 2), String.valueOf(fiscaYear -3)};
 		// Eco情報
 		EcoInfo ecoInfo = new EcoInfo();
-		ecoInfo.setBaseUrl(Constants.BASE_URL + Constants.PROTOCOR);
+//		ecoInfo.setBaseUrl(Constants.BASE_URL + Constants.PROTOCOR);
+		ecoInfo.setBaseUrl(Constants.BASE_URL);
 		ecoInfo.setKindergartenName(youchien.getYname());
 		ecoInfo.setInitYear(String.valueOf(fiscaYear));
 		ecoInfo.setYears(years);
@@ -109,28 +110,28 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping("/password")
+	@RequestMapping("/eco/password")
 	public String password() {
 		return "password";
 	}
 	
-	@RequestMapping(value="/chengPassword", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/chengPassword", method=RequestMethod.POST)
 	public String post(@RequestParam("mail") String mail) {
 		System.out.println("mail:" + mail);
 		return "login";
 	}
 	
-	@RequestMapping("/userpolicy")
+	@RequestMapping("/eco/userpolicy")
 	public String userpolicy() {
 		return "userpolicy";
 	}
 	
-	@RequestMapping("/privacy")
+	@RequestMapping("/eco/privacy")
 	public String privacy() {
 		return "privacy";
 	}
 
-	@RequestMapping("/qa")
+	@RequestMapping("/eco/qa")
 	public String qa() {
 		return "qa";
 	}

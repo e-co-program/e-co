@@ -2,32 +2,34 @@
 <html>
 <head>
 <title>イーコ | 画像・動画検索</title>
-<link rel="stylesheet" href="style.css" th:href="@{/css/style.css}" media="all"/>
-<!--<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/css/reset.css}" media="all"/>-->
-<link rel="stylesheet" type="text/css" href="css/slider.css" th:href="@{/css/slider.css}" media="all" />
+<link rel="stylesheet" href="style.css" th:href="@{/eco/css/style.css}" media="all"/>
+<!--<link rel="stylesheet" type="text/css" href="css/reset.css" th:href="@{/eco/css/reset.css}" media="all"/>-->
+<link rel="stylesheet" type="text/css" href="css/slider.css" th:href="@{/eco/css/slider.css}" media="all" />
+<link rel="stylesheet" type="text/css" href="css/lightbox.css" th:href="@{/eco/css/lightbox.css}" media="all"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<script type="text/javascript" src="knockout-3.3.0.js" th:src="@{/js/knockout-3.3.0.js}"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
-<script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/js/jquery.alerts.js}"/>
-<link href="css/jquery.alerts.css" th:href="@{/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="knockout-3.3.0.js" th:src="@{/eco/js/knockout-3.3.0.js}"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
+<script type="text/javascript" src="js/jquery.alerts.js" th:src="@{/eco/js/jquery.alerts.js}"/>
+<link href="css/jquery.alerts.css" th:href="@{/eco/css/jalert/jquery.alerts.css}" rel="stylesheet" type="text/css" media="screen" />
 <script th:inline="javascript">
 var ecoInfo = /*[[${EcoInfo}]]*/
 </script>
-<script type="text/javascript" src="js/search/search.js" th:src="@{/js/search/search.js}"/>
+<script type="text/javascript" src="js/search/search.js" th:src="@{/eco/js/search/search.js}"/>
 </head>
 <body>
 	<div id="header_width" >
 		<div id="header"><!-- header -->
        		<div id="s_logo">
-       		<input type="image" src="img/search/logo_font1.png" height="60px" onclick="TopClick()" /></div>
+       			<input type="image" src="/eco/img/search/logo_font1.png" height="60px" onclick="TopClick()" />
+       		</div>
        		<div id="name" th:text="${EcoInfo.kindergartenName}">===幼稚園名が入る===</div>
                <ul class="tab">
-                   <li th:id="${years[0]}" onClick="changeYear(this)"><img src="img/search/first_on.png" th:src="@{/img/search/first_on.png}" alt="今年度"/><span class="ad_select" th:text="${years[0]}">===今年度が入る===</span></li>
-                   <!-- <li th:id="${years[1]}" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="昨年"/><span class="ad" th:text="${years[1]}">===昨年が入る===</span></li>
-                   <li th:id="${years[2]}" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="一昨年"/><span class="ad" th:text="${years[2]}">===一昨年が入る===</span></li>
-                   <li th:id="${years[3]}" style="margin-right: 5px;" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/img/search/tab_off.png}" alt="３年前"/><span class="ad" th:text="${years[3]}">===3年前が入る===</span></li> -->
+                   <li th:id="${years[0]}" onClick="changeYear(this)"><img src="/eco/img/search/first_on.png" th:src="@{/eco/img/search/first_on.png}" alt="今年度"/><span class="ad_select" th:text="${years[0]}">===今年度が入る===</span></li>
+                   <!-- <li th:id="${years[1]}" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/eco/img/search/tab_off.png}" alt="昨年"/><span class="ad" th:text="${years[1]}">===昨年が入る===</span></li>
+                   <li th:id="${years[2]}" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/eco/img/search/tab_off.png}" alt="一昨年"/><span class="ad" th:text="${years[2]}">===一昨年が入る===</span></li>
+                   <li th:id="${years[3]}" style="margin-right: 5px;" onClick="changeYear(this)"><img src="img/search/tab_off.png" th:src="@{/eco/img/search/tab_off.png}" alt="３年前"/><span class="ad" th:text="${years[3]}">===3年前が入る===</span></li> -->
                </ul>
-			<div class="logout"><a href="login.html" th:href="@{/login.html}" target="_top">ログアウト</a></div>
+			<div class="logout"><a href="login.html" th:href="@{/eco/login}" target="_top">ログアウト</a></div>
             <div class="dl_wrap"><div class="dl_all" onClick="downLoad()"><div class="dl_btn"><div class="dl_text">まとめて<br />ダウンロード</div><div id="dl_count" class="count" data-bind="text: count">0</div></div></div></div>
         </div><!-- header_end -->
         <div class="clear"></div>
@@ -37,10 +39,10 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 	<div id="footer" class="item">
 		<div id="footerArea">
 			<ul>
-		    <li><a href="qa.html" target="_blank">Q＆Ａ</a></li>
-		    <li><a href="userpolicy.html" target="_blank">利用規約</a></li>
-			<li><a href="privacy.html" target="_blank">プライバシーポリシー</a></li>
-		    <li>© 2016 WideVideo</li>
+		    <li><a href="/eco/qa" target="_blank">Q＆Ａ</a></li>
+		    <li><a href="/eco/userpolicy" target="_blank">利用規約</a></li>
+			<li><a href="/eco/privacy" target="_blank">プライバシーポリシー</a></li>
+		    <li>© 2016 WideVideo Inc.</li>
 	    </ul>
 		</div>
 	</div>
@@ -140,7 +142,7 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 		        <div class="photo">
 		        	<!-- ko foreach: photoInfos -->
 		        	<div class="select">
-						<div class="subnaile"><img data-bind="attr: { src: url }, clickBubble:false"/></div>
+						<div class="subnaile"><a data-bind="attr: { href: url }" data-lightbox="group"><img data-bind="attr: { src: url }, clickBubble:false"/></a></div>
 						<div class="icon"><img data-bind="click:photoCheck, attr: { src: cIconUrl }"/></div>
 					</div>
 					<!-- /ko -->
@@ -148,6 +150,19 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 		        <!-- /ko -->
 			<div class="clear"></div>
 		</div><!-- view_end -->
+	</script>
+	<script type="text/javascript" src="./js/lightbox.js" th:src="@{/eco/js/lightbox.js}"></script>
+	<script>
+		lightbox.option({
+			'fitImagesInViewport' : true,
+			'showImageNumberLabel': true,
+			'alwaysShowNavOnTouchDevices': false,
+			'fadeDuration': 100,
+			'resizeDuration': 500,
+			'positionFromTop': 100,
+			'maxWidth':800,
+			'maxHeight':600,
+		})
 	</script>
 </body>
 </html>

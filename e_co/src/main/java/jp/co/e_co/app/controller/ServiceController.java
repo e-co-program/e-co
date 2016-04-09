@@ -60,7 +60,7 @@ public class ServiceController {
 	 * メニュー情報を返す
 	 * @return GetMenuInfoResponseModel
 	 */
-	@RequestMapping(value="/getMenuInfo", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/getMenuInfo", method=RequestMethod.POST)
 	public GetMenuInfoResponseModel getMenuInfo(@RequestBody GetMenuInfoRequestModel request,
 			HttpServletRequest httprRequest,
 			HttpServletResponse httpResponse,
@@ -101,7 +101,7 @@ public class ServiceController {
 		response.setmYear(request.getYear());
 		
 		// 幼稚園コードディレクトリ
-		File kgCodeDir = new File("C:\\inetpub\\wwwroot\\sample" + File.separator + youchienCode);
+		File kgCodeDir = new File(Constants.SAMPLE_DIRE_PATH + File.separator + youchienCode);
 		if(!kgCodeDir.exists()) {
 			// 存在しない
 			System.out.println("幼稚園ディレクトリが見つかれません。 youchienCode: " + youchienCode);
@@ -146,7 +146,7 @@ public class ServiceController {
 	 * メニュー情報を返す
 	 * @return GetMenuInfoResponseModel
 	 */
-	@RequestMapping(value="/getMenuInfoTest", method=RequestMethod.GET)
+	@RequestMapping(value="/eco/getMenuInfoTest", method=RequestMethod.GET)
 	public GetMenuInfoResponseModel getMenuInfoTest(String year) {
 		GetMenuInfoResponseModel response = new GetMenuInfoResponseModel();
 		
@@ -245,7 +245,7 @@ public class ServiceController {
 	 * @param request GetPhotoListRequestModel
 	 * @return GetPhotoListResponseModel
 	 */
-	@RequestMapping(value="/getPhotoList", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/getPhotoList", method=RequestMethod.POST)
 	public GetPhotoListResponseModel getPhotoList(@RequestBody GetPhotoListRequestModel request,
 			HttpServletRequest httprRequest,
 			HttpServletResponse httpResponse,
@@ -296,7 +296,7 @@ public class ServiceController {
 			return null;
 		}
 		
-		String targetPath = "C:\\inetpub\\wwwroot\\sample" + File.separator + parentUsers.get(0).getYouchienCode() + File.separator + request.getYear() + File.separator + request.getId();
+		String targetPath = Constants.SAMPLE_DIRE_PATH + File.separator + parentUsers.get(0).getYouchienCode() + File.separator + request.getYear() + File.separator + request.getId();
 		File targetDir = new File(targetPath);
 		if(!targetDir.exists()) {
 			return null;
@@ -311,6 +311,7 @@ public class ServiceController {
 			PhotoInfo photoInfo = new PhotoInfo();
 			File photoFile = fileList[i];
 			photoInfo.setUrl(Constants.BASE_URL
+					+ File.separator + "eco"
 					+ File.separator + "sample"
 					+ File.separator + parentUsers.get(0).getYouchienCode()
 					+ File.separator + request.getYear() 
@@ -348,7 +349,7 @@ public class ServiceController {
 		return responseModel;
 	}
 	
-	@RequestMapping(value="/createDownLoadFile", method=RequestMethod.POST)
+	@RequestMapping(value="/eco/createDownLoadFile", method=RequestMethod.POST)
 	public CreateDownLoadFileResponseModel createDownLoadFile(@RequestBody CreateDownLoadFile request,
 			HttpServletRequest httprRequest,
 			HttpServletResponse httpResponse) {
@@ -382,7 +383,7 @@ public class ServiceController {
 		ZipOutputStream zos = null;
 		System.out.println("now data: " + getNowDate());
 		String zipFileName = getNowDate() + "_eco.zip";
-		File zipFile = new File("C:\\inetpub\\wwwroot\\sample" 
+		File zipFile = new File(Constants.SAMPLE_DIRE_PATH 
 				+ File.separator + youchienCode + File.separator + "download" + File.separator + zipFileName);
 		try {
 			zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));
@@ -465,11 +466,11 @@ public class ServiceController {
 	    }
 	}
 	
-	@RequestMapping(value="/photoDownLoad", method=RequestMethod.GET)
+	@RequestMapping(value="/eco/photoDownLoad", method=RequestMethod.GET)
 	public void photoDownLoad(String fileName, String youchien, HttpServletResponse response) {
 		System.out.println("photoDownLoad");
 		System.out.println("fileName: " + fileName);
-		File zipFile = new File("C:\\inetpub\\wwwroot\\sample" + File.separator + youchien 
+		File zipFile = new File(Constants.SAMPLE_DIRE_PATH + File.separator + youchien 
 				+ File.separator + "download" + File.separator + fileName);
 		response.setHeader("Content-Disposition","attachment; filename=\"" + zipFile.getName() +"\"");
 		InputStream is = null;
