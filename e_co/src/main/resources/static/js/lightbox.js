@@ -79,7 +79,7 @@
   // Attach event handlers to the new DOM elements. click click click
   Lightbox.prototype.build = function() {
     var self = this;
-    $('<div id="lightboxOverlay" class="lightboxOverlay"></div><div id="lightbox" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /><div class="lb-nav"><a class="lb-prev" href="" ></a><a class="lb-next" href="" ></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>').appendTo($('body'));
+    $('<div id="lightboxOverlay" class="lightboxOverlay"></div><div id="lightbox" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /><div class="lb-nav"><a class="lb-prev" href="" ></a><a class="lb-next" href="" ></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div><div class="lb-select-image"><img class="lb-select-image-btn" photoId="" src=""/><div></div>').appendTo($('body'));
 
     // Cache jQuery objects
     this.$lightbox       = $('#lightbox');
@@ -135,6 +135,14 @@
       self.end();
       return false;
     });
+
+    this.$lightbox.find('.lb-select-image-btn').on('click', function() {
+      if($(this).attr("src") === "img/search/check_on.png")
+    	  $(this).attr("src", "img/search/check_off.png");
+      else
+    	  $(this).attr("src", "img/search/check_on.png");
+      return false;
+    });
   };
 
   // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
@@ -156,7 +164,9 @@
     function addToAlbum($link) {
       self.album.push({
         link: $link.attr('href'),
-        title: $link.attr('data-title') || $link.attr('title')
+        title: $link.attr('data-title') || $link.attr('title'),
+        photoId: $link.attr('photoId'),
+        img: $link.attr('img')
       });
     }
 
@@ -214,7 +224,7 @@
     this.$overlay.fadeIn(this.options.fadeDuration);
 
     $('.lb-loader').fadeIn('slow');
-    this.$lightbox.find('.lb-image, .lb-nav, .lb-prev, .lb-next, .lb-dataContainer, .lb-numbers, .lb-caption').hide();
+    this.$lightbox.find('.lb-image, .lb-nav, .lb-prev, .lb-next, .lb-dataContainer, .lb-numbers, .lb-caption, .lb-select-image').hide();
 
     this.$outerContainer.addClass('animating');
 
@@ -271,6 +281,10 @@
       self.sizeContainer($image.width(), $image.height());
     };
 
+    $(".lb-select-image-btn").attr({
+    	'photoId' :self.album[imageNumber].photoId,
+    	'src': self.album[imageNumber].img
+    });
     preloader.src          = this.album[imageNumber].link;
     this.currentImageIndex = imageNumber;
   };
@@ -293,6 +307,7 @@
 
     function postResize() {
       self.$lightbox.find('.lb-dataContainer').width(newWidth);
+      self.$lightbox.find('.lb-select-image').width(newWidth);
       self.$lightbox.find('.lb-prevLink').height(newHeight);
       self.$lightbox.find('.lb-nextLink').height(newHeight);
       self.showImage();
@@ -388,6 +403,10 @@
 
     this.$lightbox.find('.lb-dataContainer').fadeIn(this.options.resizeDuration, function() {
       return self.sizeOverlay();
+    });
+    
+    this.$lightbox.find('.lb-select-image').fadeIn(this.options.resizeDuration, function() {
+        return self.sizeOverlay();
     });
   };
 

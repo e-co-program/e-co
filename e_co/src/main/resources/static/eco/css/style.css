@@ -269,6 +269,10 @@ section {
 	background: #fff;
 	color: #8c775d;
 }
+.page_link:hover{
+	background: #FFCC66;
+	cursor: pointer;
+}
 .page li a{
 	text-decoration: none;
 	color: #8c775d;
