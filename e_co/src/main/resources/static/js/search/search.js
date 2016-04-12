@@ -21,8 +21,7 @@ function TopClick() {
 	// 現在開いてるメニュー情報取得
 	var year = menuInfoModel.year();
 	menuInfoLoad(year);
-	
-} 
+}
 
 /**
  * メニュー情報モデル
@@ -38,7 +37,7 @@ function MenuInfoModel() {
 	
 	// 写真情報を取得する
 	self.getPhoto = function(menuInfo) {
-		console.log("Photo情報取得");
+		// console.log("Photo情報取得");
 		self.searchMenuId = menuInfo.id;	// 検索対象IDセット
 		$.ajax({
 			type:"POST",	// method = "POST"
@@ -50,8 +49,8 @@ function MenuInfoModel() {
 			contentType: 'application/json', // リクエストの Content-Type
 			dataType: "json",	// レスポンスをJSONとしてパースする
 			success: function(data) {
-				console.log("success");
-				console.log(data);
+				// console.log("success");
+				// console.log(data);
 				if (null == data || null == data.photoList || data.photoList.lenght == 0) {
 					alert( "写真情報の取得に失敗しました。" );
 					return;
@@ -65,11 +64,11 @@ function MenuInfoModel() {
 				convertToPhotoInfoModels(data);
 			},
 			error: function() {
-				console.log("error");
+				// console.log("error");
 				alert( "写真情報の取得に失敗しました。" );
 			},
 			complete: function() {
-				console.log("complete");
+				// console.log("complete");
 			}
 		});
 	}
@@ -103,8 +102,8 @@ function PhotoInfoModel() {
 	self.cIconUrl = ko.observable("/eco/img/search/check_off.png");
 	
 	self.photoCheck = function(photoInfo) {
-		console.log("写真チェック");
-		console.log("photoId:" + photoInfo.photoId);
+		// console.log("写真チェック");
+		// console.log("photoId:" + photoInfo.photoId);
 		// 配列に格納済みか確認
 		var count = downLoadModel.count();
 		var index = checkedPhotos.indexOf(photoInfo.photoId);
@@ -121,17 +120,8 @@ function PhotoInfoModel() {
 		}
 		downLoadModel.count(count);
 		for (var i = 0; i < checkedPhotos.length; i++) {
-			console.log("選択写真： " + checkedPhotos[i]);
+			// console.log("選択写真： " + checkedPhotos[i]);
 		}
-	}
-	
-	self.modal = function() {
-		console.log("モーダル開始");		
-		$('.modal').show();
-		// show()してからでないと、modalBodyのwidth()とheight()がとれない
-		var left = Math.floor(($(window).width() - $('.modal').find('.modalBody').width()) / 2);
-		var top  = Math.floor(($(window).height() - $('.modal').find('.modalBody').height()) / 2);
-		$('.modal').find('.modalBody').css({'top': top,'left': left});
 	}
 }
 
@@ -166,7 +156,7 @@ function PhotoInfoModelsArray() {
 	
 	self.nextClick = function() {
 		self.offset += 50;
-		console.log("Photo情報取得 next");
+		// console.log("Photo情報取得 next");
 		$.ajax({
 			type:"POST",	// method = "POST"
 			url: ecoInfo.baseUrl + '/eco/getPhotoList',	// 送信先のURL
@@ -177,8 +167,8 @@ function PhotoInfoModelsArray() {
 			contentType: 'application/json', // リクエストの Content-Type
 			dataType: "json",	// レスポンスをJSONとしてパースする
 			success: function(data) {
-				console.log("success");
-				console.log(data);
+				// console.log("success");
+				// console.log(data);
 				if (null == data || null == data.photoList || data.photoList.lenght == 0) {
 					self.offset -= 50;
 					alert( "写真情報の取得に失敗しました。" );
@@ -189,19 +179,19 @@ function PhotoInfoModelsArray() {
 				convertToPhotoInfoModels(data);
 			},
 			error: function() {
-				console.log("error");
+				// console.log("error");
 				self.offset -= 50;
 				alert( "写真情報の取得に失敗しました。" );
 			},
 			complete: function() {
-				console.log("complete");
+				// console.log("complete");
 			}
 		});
 	}
 	
 	self.prevClick = function() {
 		self.offset -= 50;
-		console.log("Photo情報取得 prev");
+		// console.log("Photo情報取得 prev");
 		$.ajax({
 			type:"POST",	// method = "POST"
 			url: ecoInfo.baseUrl + '/eco/getPhotoList',	// 送信先のURL
@@ -212,8 +202,8 @@ function PhotoInfoModelsArray() {
 			contentType: 'application/json', // リクエストの Content-Type
 			dataType: "json",	// レスポンスをJSONとしてパースする
 			success: function(data) {
-				console.log("success");
-				console.log(data);
+				// console.log("success");
+				// console.log(data);
 				if (null == data || null == data.photoList || data.photoList.lenght == 0) {
 					self.offset += 50;
 					alert( "写真情報の取得に失敗しました。" );
@@ -224,12 +214,12 @@ function PhotoInfoModelsArray() {
 				convertToPhotoInfoModels(data);
 			},
 			error: function() {
-				console.log("error");
+				// console.log("error");
 				self.offset += 50;
 				alert( "写真情報の取得に失敗しました。" );
 			},
 			complete: function() {
-				console.log("complete");
+				// console.log("complete");
 			}
 		});
 	}
@@ -241,7 +231,7 @@ photoInfoModelsArray = new PhotoInfoModelsArray();
  * jsonデータをPhotoInfoModelsに変換する
  */
 var convertToPhotoInfoModels = function(data) {
-	console.log("title: " + data.title);
+	// console.log("title: " + data.title);
 	photoInfoModelsArray.title(data.title);
 	var photoInfoModels = new PhotoInfoModels();
 	var index = 0;
@@ -297,7 +287,7 @@ var slide = function(element, event) {
 
 // "年度タブ"クリックシ処理
 var changeYear = function(element) {
-	console.log("年度変更:" + element.id);
+	// console.log("年度変更:" + element.id);
 	// 写真情報系クリア
 	photoInfoModelsArray.title(null);
 	photoInfoModelsArray.photoInfosArray.removeAll();
@@ -346,16 +336,16 @@ var changeYear = function(element) {
 	
 	
 	if($(element).children('ad_select')) {
-		console.log("ad_select");
+		// console.log("ad_select");
 	} else if($(element).children('ad')) {
-		console.log("ad");
+		// console.log("ad");
 	}
 	
 }
 
 // "ダウンロード"クリック処理
 var downLoad = function() {
-	console.log("ダウンロード");
+	// console.log("ダウンロード");
 	// チェックされた写真情報のサイズ確認
 	if (checkedPhotos.length == 0) {
 		return;
@@ -370,7 +360,7 @@ var downLoad = function() {
 					photoIds : checkedPhotos}),	// JSONデータ本体
 				contentType: 'application/json', // リクエストの Content-Type
 				success: function(data) {
-					console.log("success");
+					// console.log("success");
 					if (data == null || data.downLoadFileName == null) {
 						return;
 					}
@@ -394,10 +384,10 @@ var downLoad = function() {
 					downLoadModel.count(0);
 				},
 				error: function() {
-					console.log("error");
+					// console.log("error");
 				},
 				complete: function() {
-					console.log("complete");
+					// console.log("complete");
 				}
 			});
 		}
@@ -415,8 +405,8 @@ var menuInfoLoad = function(year) {
 		contentType: 'application/json', // リクエストの Content-Type
 		dataType: 'json',	// レスポンスをJSONとしてパースする
 		success: function(data) {
-			console.log("success");
-			console.log(data);
+			// console.log("success");
+			// console.log(data);
 			if (data == null) {
 				menuInfoModel.year(null);
 				menuInfoModel.menuInfo(null);
@@ -424,13 +414,13 @@ var menuInfoLoad = function(year) {
 			}
 			menuInfoModel.year(data.mYear);
 			menuInfoModel.menuInfo(data.menuList);
-			console.log(menuInfoModel.menuInfo());
+			// console.log(menuInfoModel.menuInfo());
 		},
 		error: function() {
-			console.log("error");
+			// console.log("error");
 		},
 		complete: function() {
-			console.log("complete");
+			// console.log("complete");
 		}
 	});
 };
@@ -455,7 +445,7 @@ var getCookie = function(name) {
 
 // ページ読み込み後に実行
 window.onload = function() {
-	console.log("baseUrl:" + ecoInfo.baseUrl);
+	// console.log("baseUrl:" + ecoInfo.baseUrl);
 	
 	ko.applyBindings(downLoadModel, document.getElementById('dl_count'));
 	ko.applyBindings(menuInfoModel, document.getElementById('side_menu'));
@@ -463,5 +453,37 @@ window.onload = function() {
 	
 	// メニュー情報取得
 	menuInfoLoad(ecoInfo.initYear);
+	
+	// 拡大画面ボタン押下時のイベントをバインド
+	lbSelectClickBind();
 };
 
+function lbSelectClickBind(){
+	$('.lb-select-image-btn').on("click", function() {
+		var photoInfosArray = photoInfoModelsArray.photoInfosArray();
+		var target;
+		for (var i = 0; i < photoInfosArray.length; i++) {
+			var photoInfos = photoInfosArray[i].photoInfos();
+			for (var j = 0; j < photoInfos.length; j++) {
+				if(photoInfos[j].photoId === $(this).attr("photoId")){
+					target = photoInfos[j];
+				}
+			}
+		}
+
+		var count = downLoadModel.count();
+		var index = checkedPhotos.indexOf($(this).attr("photoId"));
+		if (index == -1) {
+			checkedPhotos.push($(this).attr("photoId"));
+			target.checked(true);
+			target.cIconUrl("img/search/check_on.png");
+			count++;
+		} else {
+			checkedPhotos.splice(index, 1);
+			target.checked(false);
+			target.cIconUrl("img/search/check_off.png");
+			count--;
+		}
+		downLoadModel.count(count);
+	});
+}
