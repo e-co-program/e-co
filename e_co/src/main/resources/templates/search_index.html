@@ -143,7 +143,7 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 		        <div class="photo">
 		        	<!-- ko foreach: photoInfos -->
 		        	<div class="select">
-						<div class="subnaile"><a data-bind="attr: { href: url }" data-lightbox="group"><img data-bind="attr: { src: url }, clickBubble:false"/></a></div>
+						<div class="subnaile"><a data-bind="attr: { href: url, photoId: photoId, img: cIconUrl}" data-lightbox="group"><img data-bind="attr: { src: url }, clickBubble:false" /></a></div>
 						<div class="icon"><img data-bind="click:photoCheck, attr: { src: cIconUrl }"/></div>
 					</div>
 					<!-- /ko -->
