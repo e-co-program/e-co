@@ -101,7 +101,7 @@ public class ServiceController {
 		response.setmYear(request.getYear());
 		
 		// 幼稚園コードディレクトリ
-		File kgCodeDir = new File(Constants.SAMPLE_DIRE_PATH + File.separator + youchienCode);
+		File kgCodeDir = new File(Constants.SAMPLE_DIRE_PATH + "/" + youchienCode);
 		if(!kgCodeDir.exists()) {
 			// 存在しない
 			System.out.println("幼稚園ディレクトリが見つかれません。 youchienCode: " + youchienCode);
@@ -202,7 +202,7 @@ public class ServiceController {
 		}
 		String id = "";
 		if(parent != null) {
-			id = parent + File.separator;
+			id = parent + "/";
 		}
 		
 		List<MenuInfoBean> menuInfoList = new ArrayList<MenuInfoBean>();
@@ -296,7 +296,7 @@ public class ServiceController {
 			return null;
 		}
 		
-		String targetPath = Constants.SAMPLE_DIRE_PATH + File.separator + parentUsers.get(0).getYouchienCode() + File.separator + request.getYear() + File.separator + request.getId();
+		String targetPath = Constants.SAMPLE_DIRE_PATH + "/" + parentUsers.get(0).getYouchienCode() + "/" + request.getYear() + "/" + request.getId();
 		File targetDir = new File(targetPath);
 		if(!targetDir.exists()) {
 			return null;
@@ -311,16 +311,16 @@ public class ServiceController {
 			PhotoInfo photoInfo = new PhotoInfo();
 			File photoFile = fileList[i];
 			photoInfo.setUrl(Constants.BASE_URL
-					+ File.separator + "eco"
-					+ File.separator + "sample"
-					+ File.separator + parentUsers.get(0).getYouchienCode()
-					+ File.separator + request.getYear() 
-					+ File.separator + request.getId()
-					+ File.separator + photoFile.getName());
+					+ "/" + "eco"
+					+ "/" + "sample"
+					+ "/" + parentUsers.get(0).getYouchienCode()
+					+ "/" + request.getYear() 
+					+ "/" + request.getId()
+					+ "/" + photoFile.getName());
 			photoInfo.setPhotoId(parentUsers.get(0).getYouchienCode()
-					+ File.separator + request.getYear() 
-					+ File.separator + request.getId()
-					+ File.separator + photoFile.getName());
+					+ "/" + request.getYear() 
+					+ "/" + request.getId()
+					+ "/" + photoFile.getName());
 			photoList.add(photoInfo);
 		}
 		// 現在ページ
@@ -345,7 +345,7 @@ public class ServiceController {
 		responseModel.setAllPage(allPage);
 		responseModel.setPhotoList(photoList);
 		responseModel.setMenuId(request.getId());
-		responseModel.setTitle(request.getId().replaceAll("\\" + File.separator, " "));
+		responseModel.setTitle(request.getId().replaceAll("\\" + "/", " "));
 		return responseModel;
 	}
 	
@@ -377,14 +377,14 @@ public class ServiceController {
 		
 		List<File> fileList = new ArrayList<>();
 		for (String photoId : request.getPhotoIds()) {
-			File targetFile = new File("C:\\production" + File.separator + photoId);
+			File targetFile = new File("C:\\production" + "/" + photoId);
 			fileList.add(targetFile);
 		}
 		ZipOutputStream zos = null;
 		System.out.println("now data: " + getNowDate());
 		String zipFileName = getNowDate() + "_eco.zip";
 		File zipFile = new File(Constants.SAMPLE_DIRE_PATH 
-				+ File.separator + youchienCode + File.separator + "download" + File.separator + zipFileName);
+				+ "/" + youchienCode + "/" + "download" + "/" + zipFileName);
 		try {
 			zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));
 			createZip(zos, fileList);
@@ -470,8 +470,8 @@ public class ServiceController {
 	public void photoDownLoad(String fileName, String youchien, HttpServletResponse response) {
 		System.out.println("photoDownLoad");
 		System.out.println("fileName: " + fileName);
-		File zipFile = new File(Constants.SAMPLE_DIRE_PATH + File.separator + youchien 
-				+ File.separator + "download" + File.separator + fileName);
+		File zipFile = new File(Constants.SAMPLE_DIRE_PATH + "/" + youchien 
+				+ "/" + "download" + "/" + fileName);
 		response.setHeader("Content-Disposition","attachment; filename=\"" + zipFile.getName() +"\"");
 		InputStream is = null;
 		try {
