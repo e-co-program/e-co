@@ -150,6 +150,17 @@ var ecoInfo = /*[[${EcoInfo}]]*/
 				</div>
 		        <!-- /ko -->
 			<div class="clear"></div>
+		   	<div class="pagenation"><!-- pagenation -->
+               	<div data-bind="text: countStr"></div>
+               		<ul class="page">
+						<!-- ko if: prev -->
+                   		<li class="page_link" data-bind="click: prevClick">＜＜ 前へ</li>
+						<!-- /ko -->
+						<!-- ko if: next -->
+                   		<li class="page_link" data-bind="click: nextClick">次へ ＞＞</li>
+						<!-- /ko -->
+               		</ul>
+        	</div><!-- pagenation_end -->
 		</div><!-- view_end -->
 	</script>
 	<script type="text/javascript" src="./js/lightbox.js" th:src="@{/eco/js/lightbox.js}"></script>
